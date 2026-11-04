@@ -1,20 +1,21 @@
 import { useEffect, useState } from 'react'
-import { KartuPilihan, type Opsi } from '../components/KartuPilihan'
-import { LATIHAN, type Soal } from '../data/latihan'
+import { KartuPilihan } from '../components/KartuPilihan'
+import { LATIHAN, acakOpsi, type Soal } from '../data/latihan'
 import { TEKS } from '../data/teks'
 
 const SAMPUL_MS = 2500
 
-// S08 sampul (I1) lalu S09 soal L1-L4. Satu kali jawab per soal, tanpa tanda benar/salah (A9, A12).
-export function Latihan({ onSelesai }: { onSelesai: (benar: number) => void }) {
-  const [sampul, setSampul] = useState(true)
+// S08 sampul (I1) lalu S09 soal L1-L4. Ulangi Latihan langsung ke S09 soal 1 (PRD §5 S10, A12).
+export function Latihan({ langsungSoal = false, onSelesai }: { langsungSoal?: boolean; onSelesai: (benar: number) => void }) {
+  const [sampul, setSampul] = useState(!langsungSoal)
   const [idx, setIdx] = useState(0)
   const [benar, setBenar] = useState(0)
 
   useEffect(() => {
+    if (!sampul) return
     const t = setTimeout(() => setSampul(false), SAMPUL_MS)
     return () => clearTimeout(t)
-  }, [])
+  }, [sampul])
 
   if (sampul) {
     return (
@@ -36,11 +37,7 @@ export function Latihan({ onSelesai }: { onSelesai: (benar: number) => void }) {
 
 // Posisi benar/salah diacak setiap kali soal ditampilkan (A10, AC-08).
 function SoalLatihan({ nomor, soal, onJawab }: { nomor: number; soal: Soal; onJawab: (benar: boolean) => void }) {
-  const [opsi] = useState<readonly [Opsi, Opsi]>(() => {
-    const b = { teks: soal.benar, benar: true }
-    const s = { teks: soal.salah, benar: false }
-    return Math.random() < 0.5 ? [b, s] : [s, b]
-  })
+  const [opsi] = useState(() => acakOpsi(soal))
 
   return (
     <section className="layar">

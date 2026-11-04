@@ -51,7 +51,7 @@ function beri(state: State, hasil: { sesi: Sesi; tambah: number }): State {
 function reducer(state: State, aksi: Aksi): State {
   switch (aksi.tipe) {
     case 'ke':
-      return { ...state, layar: aksi.layar }
+      return { ...state, layar: aksi.layar, putaran: aksi.layar === 'latihan' ? 0 : state.putaran }
     case 'pilihProfil':
       return { ...state, profil: aksi.id, sesi: SESI_BARU, layar: 'menu' }
     case 'akhiriSesi': // Menu > Profil dan Keluar > Ya (PRD A3, A14)
@@ -137,7 +137,11 @@ export function App() {
           />
         )}
         {layar === 'latihan' && (
-          <Latihan key={state.putaran} onSelesai={(benar) => dispatch({ tipe: 'latihanSelesai', benar })} />
+          <Latihan
+            key={state.putaran}
+            langsungSoal={state.putaran > 0}
+            onSelesai={(benar) => dispatch({ tipe: 'latihanSelesai', benar })}
+          />
         )}
         {layar === 'hasilLatihan' && (
           <HasilLatihan

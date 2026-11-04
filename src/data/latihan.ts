@@ -1,5 +1,12 @@
 // Soal latihan (PRD Lampiran A.5). Urutan soal tetap; posisi kartu diacak saat tampil.
 export type Soal = { id: string; tanya: string; benar: string; salah: string }
+export type OpsiLatihan = { teks: string; benar: boolean }
+
+export function acakOpsi(soal: Soal, rng: () => number = Math.random): readonly [OpsiLatihan, OpsiLatihan] {
+  const b: OpsiLatihan = { teks: soal.benar, benar: true }
+  const s: OpsiLatihan = { teks: soal.salah, benar: false }
+  return rng() < 0.5 ? [b, s] : [s, b]
+}
 
 export const LATIHAN: readonly Soal[] = [
   {

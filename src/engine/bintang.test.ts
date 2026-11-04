@@ -1,6 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { CERITA, ceritaBerikutnya } from '../data/cerita.ts'
+import { LATIHAN, acakOpsi } from '../data/latihan.ts'
 import { SESI_BARU, bintangSesi, lencana, selesaiCerita, selesaiLatihan } from './bintang.ts'
 
 test('cerita memberi +1 bintang sekali per cerita per sesi (AC-07)', () => {
@@ -55,6 +56,16 @@ test('alur cerita 2 (berbagi) dan cerita 3 (perubahan) sesuai PRD §6 & I2 (AC-0
   assert.equal(ceritaBerikutnya('giliran'), 'berbagi')
   assert.equal(ceritaBerikutnya('berbagi'), 'perubahan')
   assert.equal(ceritaBerikutnya('perubahan'), 'giliran')
+})
+
+test('latihan memiliki 4 soal (L1-L4) dan mengacak posisi opsi (AC-08)', () => {
+  assert.deepEqual(LATIHAN.map((s) => s.id), ['L1', 'L2', 'L3', 'L4'])
+  const kiriBenar = acakOpsi(LATIHAN[0], () => 0.1)
+  const kananBenar = acakOpsi(LATIHAN[0], () => 0.9)
+  assert.equal(kiriBenar[0].benar, true)
+  assert.equal(kiriBenar[1].benar, false)
+  assert.equal(kananBenar[0].benar, false)
+  assert.equal(kananBenar[1].benar, true)
 })
 
 test('latihan hanya menambah selisih bila lebih baik (AC-09)', () => {
