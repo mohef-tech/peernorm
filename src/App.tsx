@@ -24,6 +24,7 @@ type Layar = 'splash' | 'mulai' | 'profil' | TujuanMenu | 'menu' | 'cerita' | 'h
 
 type State = {
   layar: Layar
+  keluar: boolean
   profil: ProfilId | null
   total: Total
   sesi: Sesi
@@ -34,6 +35,7 @@ type State = {
 
 type Aksi =
   | { tipe: 'ke'; layar: Layar }
+  | { tipe: 'tutupKeluar' }
   | { tipe: 'pilihProfil'; id: ProfilId }
   | { tipe: 'akhiriSesi'; layar: 'profil' | 'mulai' }
   | { tipe: 'bukaCerita'; id: CeritaId }
@@ -51,11 +53,14 @@ function beri(state: State, hasil: { sesi: Sesi; tambah: number }): State {
 function reducer(state: State, aksi: Aksi): State {
   switch (aksi.tipe) {
     case 'ke':
-      return { ...state, layar: aksi.layar, putaran: aksi.layar === 'latihan' ? 0 : state.putaran }
+      if (aksi.layar === 'keluar') return { ...state, keluar: true }
+      return { ...state, keluar: false, layar: aksi.layar, putaran: aksi.layar === 'latihan' ? 0 : state.putaran }
+    case 'tutupKeluar':
+      return { ...state, keluar: false }
     case 'pilihProfil':
-      return { ...state, profil: aksi.id, sesi: SESI_BARU, layar: 'menu' }
+      return { ...state, keluar: false, profil: aksi.id, sesi: SESI_BARU, layar: 'menu' }
     case 'akhiriSesi': // Menu > Profil dan Keluar > Ya (PRD A3, A14)
-      return { ...state, profil: null, sesi: SESI_BARU, layar: aksi.layar }
+      return { ...state, keluar: false, profil: null, sesi: SESI_BARU, layar: aksi.layar }
     case 'bukaCerita':
       return { ...state, cerita: aksi.id, layar: 'cerita' }
     case 'ceritaSelesai':
@@ -69,6 +74,7 @@ function reducer(state: State, aksi: Aksi): State {
 
 const awal = (): State => ({
   layar: 'splash',
+  keluar: false,
   profil: null,
   total: bacaTotal(),
   sesi: SESI_BARU,
@@ -104,6 +110,11 @@ export function App() {
   const keMulai = useCallback(() => ke('mulai'), [ke])
   const keMenu = useCallback(() => ke('menu'), [ke])
   const keMenuCerita = useCallback(() => ke('pilihCerita'), [ke])
+  const tutupKeluar = useCallback(() => dispatch({ tipe: 'tutupKeluar' }), [])
+  const keluarYa = useCallback(() => {
+    simpanTotal(state.total)
+    dispatch({ tipe: 'akhiriSesi', layar: 'mulai' })
+  }, [state.total])
   const ceritaSelesai = useCallback((id: CeritaId) => dispatch({ tipe: 'ceritaSelesai', id }), [])
 
   const play = () => {
@@ -151,7 +162,6 @@ export function App() {
           />
         )}
         {layar === 'hadiah' && <Hadiah bintangSesi={bintangSesi(state.sesi)} />}
-        {layar === 'keluar' && <Keluar onYa={() => dispatch({ tipe: 'akhiriSesi', layar: 'mulai' })} onTidak={keMenu} />}
         {layar === 'panduan' && <Panduan />}
 
         {!TANPA_BERANDA.has(layar) && (
@@ -162,6 +172,8 @@ export function App() {
             {TEKS.beranda}
           </Tombol>
         )}
+
+        {state.keluar && <Keluar onYa={keluarYa} onTidak={tutupKeluar} />}
       </Stage>
       <div className="putar-layar">
         <p>{TEKS.putarLayar}</p>

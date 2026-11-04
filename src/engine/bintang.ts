@@ -6,6 +6,7 @@ export type LencanaId = 'pembelajarHebat' | 'rajinBelajar' | 'semangatLuarBiasa'
 
 export const SESI_BARU: Sesi = { ceritaSelesai: [], latihanTerbaik: 0 }
 export const MAKS_LATIHAN = 4
+export const MAKS_SESI = 7
 
 // Aturan 1: +1 hanya saat cerita itu pertama kali selesai di sesi ini.
 export function selesaiCerita(sesi: Sesi, id: CeritaId): { sesi: Sesi; tambah: number } {
@@ -20,7 +21,7 @@ export function selesaiLatihan(sesi: Sesi, benar: number): { sesi: Sesi; tambah:
   return { sesi: { ...sesi, latihanTerbaik: n }, tambah: n - sesi.latihanTerbaik }
 }
 
-export const bintangSesi = (sesi: Sesi) => sesi.ceritaSelesai.length + sesi.latihanTerbaik
+export const bintangSesi = (sesi: Sesi) => Math.min(MAKS_SESI, sesi.ceritaSelesai.length + sesi.latihanTerbaik)
 
 // Aturan 4: 0 = tanpa lencana; 1-3, 4-6, 7.
 export function lencana(bintang: number): LencanaId | null {

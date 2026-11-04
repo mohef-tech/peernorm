@@ -11,10 +11,11 @@ export function IkonBintang({ terisi = true }: { terisi?: boolean }) {
 
 // Slot bintang di Hadiah: terisi = bintangSesi (maks 7).
 export function Bintang({ terisi, slot = 7 }: { terisi: number; slot?: number }) {
+  const n = Math.max(0, Math.min(slot, terisi))
   return (
-    <div className="baris-bintang" role="img" aria-label={`${terisi} dari ${slot} bintang`}>
+    <div className="baris-bintang" role="img" aria-label={`${n} dari ${slot} bintang`}>
       {Array.from({ length: slot }, (_, i) => (
-        <IkonBintang key={i} terisi={i < terisi} />
+        <IkonBintang key={i} terisi={i < n} />
       ))}
     </div>
   )
