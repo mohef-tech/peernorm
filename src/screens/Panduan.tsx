@@ -1,7 +1,7 @@
 import { PANDUAN } from '../data/panduan'
 import { TEKS } from '../data/teks'
 
-// S13: 1 halaman teks tips dari klien (PRD A.6).
+// S13: 1 halaman teks tips pendampingan (PRD §5, Lampiran A.6). Navigasi kembali ke Menu lewat tombol Beranda.
 export function Panduan() {
   return (
     <section className="layar layar-teks">
@@ -9,7 +9,11 @@ export function Panduan() {
       {PANDUAN.length === 0 ? (
         <p className="penanda">[Teks Panduan Pendamping dari klien, paling lambat 8 November]</p>
       ) : (
-        PANDUAN.map((p, i) => <p key={i}>{p}</p>)
+        <ol className="daftar-petunjuk">
+          {PANDUAN.map((p) => (
+            <li key={p}>{p}</li>
+          ))}
+        </ol>
       )}
     </section>
   )

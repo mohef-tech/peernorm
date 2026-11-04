@@ -2,6 +2,9 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { CERITA, ceritaBerikutnya } from '../data/cerita.ts'
 import { LATIHAN, acakOpsi } from '../data/latihan.ts'
+import { PANDUAN } from '../data/panduan.ts'
+import { TEKS } from '../data/teks.ts'
+import { cekSuara, hentikanNarasi, musikHidup, putarNarasi } from './audio.ts'
 import { SESI_BARU, bintangSesi, lencana, selesaiCerita, selesaiLatihan } from './bintang.ts'
 
 test('cerita memberi +1 bintang sekali per cerita per sesi (AC-07)', () => {
@@ -88,5 +91,19 @@ test('lencana mengikuti bintangSesi (AC-11)', () => {
   assert.deepEqual([0, 1, 3, 4, 6, 7].map(lencana), [
     null, 'pembelajarHebat', 'pembelajarHebat', 'rajinBelajar', 'rajinBelajar', 'semangatLuarBiasa',
   ])
+})
+
+test('petunjuk, panduan, dan fallback audio tidak macet tanpa file fisik (AC-14, AC-15)', async () => {
+  assert.equal(TEKS.petunjuk.butir.length, 5)
+  assert.ok(PANDUAN.length > 0)
+  assert.equal(await cekSuara('petunjuk'), false)
+  let berhenti = false
+  putarNarasi('petunjuk', () => {
+    berhenti = true
+  })
+  assert.equal(berhenti, true)
+  musikHidup(true)
+  musikHidup(false)
+  hentikanNarasi()
 })
 

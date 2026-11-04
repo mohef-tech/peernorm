@@ -1,12 +1,14 @@
 // Pemuat aset dengan progres nyata untuk bilah muat Splash (PRD §10.4).
 // Aset gagal dimuat tetap dihitung selesai agar aplikasi tidak macet.
-const BASE = import.meta.env.BASE_URL + 'assets/'
+const BASE = (import.meta.env?.BASE_URL ?? '/') + 'assets/'
 
 // shortcut: kosong sampai gambar/musik pengganti masuk; isi path relatif terhadap public/assets/.
 export const ASET_INTI: readonly string[] = []
 
 function muatSatu(path: string): Promise<unknown> {
-  if (path.endsWith('.mp3')) return fetch(BASE + path).then((r) => r.blob())
+  if (path.endsWith('.mp3')) {
+    return fetch(BASE + path).then((r) => (r.ok ? r.blob() : Promise.reject()))
+  }
   const img = new Image()
   img.src = BASE + path
   return img.decode()
