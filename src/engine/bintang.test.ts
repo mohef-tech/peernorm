@@ -1,11 +1,60 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
+import { CERITA, ceritaBerikutnya } from '../data/cerita.ts'
 import { SESI_BARU, bintangSesi, lencana, selesaiCerita, selesaiLatihan } from './bintang.ts'
 
-test('cerita memberi 1 bintang sekali per sesi (AC-07)', () => {
-  const a = selesaiCerita(SESI_BARU, 'giliran')
-  assert.equal(a.tambah, 1)
-  assert.equal(selesaiCerita(a.sesi, 'giliran').tambah, 0)
+test('cerita memberi +1 bintang sekali per cerita per sesi (AC-07)', () => {
+  let s = SESI_BARU
+  for (const id of ['giliran', 'berbagi', 'perubahan'] as const) {
+    const a = selesaiCerita(s, id)
+    assert.equal(a.tambah, 1)
+    assert.equal(selesaiCerita(a.sesi, id).tambah, 0)
+    s = a.sesi
+  }
+  assert.equal(bintangSesi(s), 3)
+})
+
+test('alur cerita 2 (berbagi) dan cerita 3 (perubahan) sesuai PRD §6 & I2 (AC-05)', () => {
+  const berbagi = CERITA.find((c) => c.id === 'berbagi')!
+  assert.deepEqual(
+    berbagi.langkah.map((l) => [l.jenis, l.id, l.hal]),
+    [
+      ['narasi', 'berbagi-01', '1/6'],
+      ['narasi', 'berbagi-02', '2/6'],
+      ['narasi', 'berbagi-03', '3/6'],
+      ['narasi', 'berbagi-04', '4/6'],
+      ['pilihan', 'berbagi-pilih', '5/6'],
+      ['hebat', 'berbagi-hebat', '6/6'],
+      ['selesai', 'berbagi-selesai', undefined],
+    ],
+  )
+  const pilihBerbagi = berbagi.langkah[4]
+  assert.equal(pilihBerbagi.jenis, 'pilihan')
+  assert.equal(pilihBerbagi.ulang.id, 'berbagi-ulang')
+  assert.equal(pilihBerbagi.ulang.hal, '6/6')
+
+  const perubahan = CERITA.find((c) => c.id === 'perubahan')!
+  assert.deepEqual(
+    perubahan.langkah.map((l) => [l.jenis, l.id, l.hal]),
+    [
+      ['narasi', 'perubahan-01', '1/6'],
+      ['narasi', 'perubahan-02', '2/6'],
+      ['narasi', 'perubahan-03', '3/6'],
+      ['pilihan', 'perubahan-pilih', '4/6'],
+      ['hebat', 'perubahan-hebat', undefined],
+      ['narasi', 'perubahan-terima', '5/6'],
+      ['narasi', 'perubahan-pelajaran', '6/6'],
+      ['selesai', 'perubahan-selesai', undefined],
+    ],
+  )
+  const pilihPerubahan = perubahan.langkah[3]
+  assert.equal(pilihPerubahan.jenis, 'pilihan')
+  assert.equal(pilihPerubahan.ulang.id, 'perubahan-ulang')
+  assert.equal(pilihPerubahan.ulang.hal, '5/6')
+
+  assert.equal(ceritaBerikutnya('giliran'), 'berbagi')
+  assert.equal(ceritaBerikutnya('berbagi'), 'perubahan')
+  assert.equal(ceritaBerikutnya('perubahan'), 'giliran')
 })
 
 test('latihan hanya menambah selisih bila lebih baik (AC-09)', () => {

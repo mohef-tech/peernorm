@@ -494,6 +494,10 @@ h1 {
   text-align: left;
 }
 
+.panel-teks:empty {
+  display: none;
+}
+
 .layar-cerita > :not(.adegan) {
   position: relative;
 }
