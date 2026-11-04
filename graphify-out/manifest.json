@@ -1,0 +1,212 @@
+{
+  "package.json": {
+    "mtime": 1793720969.4813929,
+    "seen": 1793777855.102098,
+    "ast_hash": "8ed767d5f3b2eb3aefa985d6aa859875",
+    "semantic_hash": "8ed767d5f3b2eb3aefa985d6aa859875"
+  },
+  "src/App.tsx": {
+    "mtime": 1793773743.158986,
+    "seen": 1793777855.1021051,
+    "ast_hash": "137cd8e6cb972d0a8bb2eb0922e39367",
+    "semantic_hash": "137cd8e6cb972d0a8bb2eb0922e39367"
+  },
+  "src/components/Bintang.tsx": {
+    "mtime": 1793773743.2077124,
+    "seen": 1793777855.102109,
+    "ast_hash": "7207aec0dda7235222d74b1fc9ca6a88",
+    "semantic_hash": "7207aec0dda7235222d74b1fc9ca6a88"
+  },
+  "src/components/IkonSuara.tsx": {
+    "mtime": 1793769974.6379037,
+    "seen": 1793777855.102112,
+    "ast_hash": "420beb5782bfa84009025f81fdfe11e9",
+    "semantic_hash": "420beb5782bfa84009025f81fdfe11e9"
+  },
+  "src/components/KartuPilihan.tsx": {
+    "mtime": 1793769974.6668704,
+    "seen": 1793777855.1021152,
+    "ast_hash": "2e8df13e04df57bbf2ba97bea9860fb1",
+    "semantic_hash": "2e8df13e04df57bbf2ba97bea9860fb1"
+  },
+  "src/components/Lencana.tsx": {
+    "mtime": 1793769974.6970172,
+    "seen": 1793777855.102119,
+    "ast_hash": "daf268a493cab337fd82b1d31a1508b0",
+    "semantic_hash": "daf268a493cab337fd82b1d31a1508b0"
+  },
+  "src/components/Stage.tsx": {
+    "mtime": 1793769974.7360408,
+    "seen": 1793777855.102122,
+    "ast_hash": "7643dcee30aa810bdd1439cfffbd73fb",
+    "semantic_hash": "7643dcee30aa810bdd1439cfffbd73fb"
+  },
+  "src/components/Tombol.tsx": {
+    "mtime": 1793770078.0416994,
+    "seen": 1793777855.1021252,
+    "ast_hash": "9a714a04cd085b78c5ca089655a45b77",
+    "semantic_hash": "9a714a04cd085b78c5ca089655a45b77"
+  },
+  "src/data/cerita.ts": {
+    "mtime": 1793720969.5624704,
+    "seen": 1793777855.102128,
+    "ast_hash": "4a29c1f5d4cc0f35aa52b41d28efe938",
+    "semantic_hash": "4a29c1f5d4cc0f35aa52b41d28efe938"
+  },
+  "src/data/latihan.ts": {
+    "mtime": 1793772854.8253314,
+    "seen": 1793777855.102131,
+    "ast_hash": "c44295ce4e18707cc76681cc8e7ed410",
+    "semantic_hash": "c44295ce4e18707cc76681cc8e7ed410"
+  },
+  "src/data/panduan.ts": {
+    "mtime": 1793775118.1494033,
+    "seen": 1793777855.102134,
+    "ast_hash": "fdd1a467a1dc77e4e126dda1efb91c67",
+    "semantic_hash": "fdd1a467a1dc77e4e126dda1efb91c67"
+  },
+  "src/data/profil.ts": {
+    "mtime": 1793720892.8813868,
+    "seen": 1793777855.102138,
+    "ast_hash": "e7bf004960719766a9410bf1bbd115d4",
+    "semantic_hash": "e7bf004960719766a9410bf1bbd115d4"
+  },
+  "src/data/teks.ts": {
+    "mtime": 1793720892.939546,
+    "seen": 1793777855.102141,
+    "ast_hash": "8a2405e1a8d9efe1f8abb3b657a63b86",
+    "semantic_hash": "8a2405e1a8d9efe1f8abb3b657a63b86"
+  },
+  "src/engine/audio.ts": {
+    "mtime": 1793775118.276693,
+    "seen": 1793777855.102144,
+    "ast_hash": "721e9f3ee8c99f4252209cafd747c016",
+    "semantic_hash": "721e9f3ee8c99f4252209cafd747c016"
+  },
+  "src/engine/bintang.test.ts": {
+    "mtime": 1793775668.6249042,
+    "seen": 1793777855.102147,
+    "ast_hash": "c6b2b18b93eb602734de141e78990887",
+    "semantic_hash": "c6b2b18b93eb602734de141e78990887"
+  },
+  "src/engine/bintang.ts": {
+    "mtime": 1793773743.2525494,
+    "seen": 1793777855.10215,
+    "ast_hash": "25102dec85feae06481f1293a6b75db9",
+    "semantic_hash": "25102dec85feae06481f1293a6b75db9"
+  },
+  "src/engine/preload.ts": {
+    "mtime": 1793775118.4040046,
+    "seen": 1793777855.102153,
+    "ast_hash": "f8fb180e8f1bb209fea3c7be1f211cd1",
+    "semantic_hash": "f8fb180e8f1bb209fea3c7be1f211cd1"
+  },
+  "src/engine/storage.ts": {
+    "mtime": 1793720893.2608001,
+    "seen": 1793777855.102156,
+    "ast_hash": "579ce06863b50e7980a48a1f2dc084d4",
+    "semantic_hash": "579ce06863b50e7980a48a1f2dc084d4"
+  },
+  "src/main.tsx": {
+    "mtime": 1793769975.363769,
+    "seen": 1793777855.102159,
+    "ast_hash": "9c28f6d5821f426701ac769484430733",
+    "semantic_hash": "9c28f6d5821f426701ac769484430733"
+  },
+  "src/node-test.d.ts": {
+    "mtime": 1793775559.8700647,
+    "seen": 1793777855.102162,
+    "ast_hash": "c7055ec9b26feb23126574c3513f2b5a",
+    "semantic_hash": "c7055ec9b26feb23126574c3513f2b5a"
+  },
+  "src/screens/Cerita.tsx": {
+    "mtime": 1793769975.4547353,
+    "seen": 1793777855.102166,
+    "ast_hash": "b2afab4c9ff7669617252e368a8b057f",
+    "semantic_hash": "b2afab4c9ff7669617252e368a8b057f"
+  },
+  "src/screens/Hadiah.tsx": {
+    "mtime": 1793769975.4885902,
+    "seen": 1793777855.102169,
+    "ast_hash": "db2a50826e2761344798c61a9d5d84b4",
+    "semantic_hash": "db2a50826e2761344798c61a9d5d84b4"
+  },
+  "src/screens/HasilLatihan.tsx": {
+    "mtime": 1793769975.5202029,
+    "seen": 1793777855.1021729,
+    "ast_hash": "75f8e4e18841e859c4003cb5193e0dae",
+    "semantic_hash": "75f8e4e18841e859c4003cb5193e0dae"
+  },
+  "src/screens/Keluar.tsx": {
+    "mtime": 1793769975.542454,
+    "seen": 1793777855.102176,
+    "ast_hash": "9079af215411d020f04b097e7dd79c17",
+    "semantic_hash": "9079af215411d020f04b097e7dd79c17"
+  },
+  "src/screens/Latihan.tsx": {
+    "mtime": 1793773031.5151367,
+    "seen": 1793777855.102179,
+    "ast_hash": "12913d3c02beef5fffdd55347e0788f9",
+    "semantic_hash": "12913d3c02beef5fffdd55347e0788f9"
+  },
+  "src/screens/Menu.tsx": {
+    "mtime": 1793769975.6150255,
+    "seen": 1793777855.102182,
+    "ast_hash": "2271485fce124f01b512f9cd72e5c57a",
+    "semantic_hash": "2271485fce124f01b512f9cd72e5c57a"
+  },
+  "src/screens/Mulai.tsx": {
+    "mtime": 1793769975.643544,
+    "seen": 1793777855.102185,
+    "ast_hash": "55be6ece8740daec73e94b8efc77a5d0",
+    "semantic_hash": "55be6ece8740daec73e94b8efc77a5d0"
+  },
+  "src/screens/Panduan.tsx": {
+    "mtime": 1793775118.5401108,
+    "seen": 1793777855.102188,
+    "ast_hash": "c2196da7beb49172544484eda5f1a813",
+    "semantic_hash": "c2196da7beb49172544484eda5f1a813"
+  },
+  "src/screens/Petunjuk.tsx": {
+    "mtime": 1793769975.7026026,
+    "seen": 1793777855.1021912,
+    "ast_hash": "6183bc763ef6ea6e605972a51107edc6",
+    "semantic_hash": "6183bc763ef6ea6e605972a51107edc6"
+  },
+  "src/screens/PilihCerita.tsx": {
+    "mtime": 1793769975.7354412,
+    "seen": 1793777855.1021938,
+    "ast_hash": "36c760711479fed2609e44731bd47876",
+    "semantic_hash": "36c760711479fed2609e44731bd47876"
+  },
+  "src/screens/Profil.tsx": {
+    "mtime": 1793769975.7792618,
+    "seen": 1793777855.102197,
+    "ast_hash": "1feb1aff9479adbbbb3c547461424555",
+    "semantic_hash": "1feb1aff9479adbbbb3c547461424555"
+  },
+  "src/screens/Splash.tsx": {
+    "mtime": 1793769975.8514645,
+    "seen": 1793777855.102201,
+    "ast_hash": "fe3f34218c9349898c101722814b748a",
+    "semantic_hash": "fe3f34218c9349898c101722814b748a"
+  },
+  "tsconfig.json": {
+    "mtime": 1793775668.6991107,
+    "seen": 1793777855.1022038,
+    "ast_hash": "4fb8203c26b2e270967cc9d82f4dfcbd",
+    "semantic_hash": "4fb8203c26b2e270967cc9d82f4dfcbd"
+  },
+  "vite.config.ts": {
+    "mtime": 1793720893.3114977,
+    "seen": 1793777855.102207,
+    "ast_hash": "5fb4eaee87dfccde730b787f50b77c39",
+    "semantic_hash": "5fb4eaee87dfccde730b787f50b77c39"
+  },
+  "PRD-PeerNorm.md": {
+    "mtime": 1793716400.3636303,
+    "seen": 1793777855.10221,
+    "ast_hash": "8ced21b89e1beb3da5d845076b0bd48f",
+    "semantic_hash": "8ced21b89e1beb3da5d845076b0bd48f"
+  }
+}

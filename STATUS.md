@@ -1,7 +1,8 @@
 # Status Pengerjaan Proyek PeerNorm
 
 Terakhir Diperbarui: 4 November 2026
-Branch Aktif: `argon`
+Branch Aktif: `canva` (Eksperimen & Integrasi Aset Grafis)
+Base Code: `argon` (Logika 100% lulus audit TypeScript & 7 unit tests)
 Stack: Vite + React + TypeScript + Vanilla CSS (No External Router)
 
 ---
@@ -15,16 +16,22 @@ Stack: Vite + React + TypeScript + Vanilla CSS (No External Router)
 - [x] S06 & S07: 3 Cerita Sosial Lengkap (Menunggu Giliran, Berbagi, Menghadapi Perubahan)
 - [x] S08, S09, S10: Modul Latihan 4 Soal (Opsi acak, highlight netral 0,4s, skor terbaik maks 4 bintang)
 - [x] S11 (Hadiah 7 slot bintang & 3 tingkat lencana) & S12 (Modal Keluar + Reset Sesi)
-- [x] S05 (Petunjuk), S13 (Panduan Pendamping), dan graceful fallback media bila aset fisik belum tersedia
+- [x] S05 (Petunjuk), S13 (Panduan Pendamping), dan graceful media fallback
+- [x] Audit pengujian menyeluruh: TypeScript 0 error, build produksi bersih, 7 unit test pass
 
 ---
 
-## 2. Tugas Berjalan / Berikutnya (CURRENT & NEXT TASK)
-- [ ] **Langkah 5**: Pengujian menyeluruh (Linting, TypeScript check, verifikasi audio/gambar riil dari klien).
+## 2. Tugas Berjalan / Planning Berikutnya (CURRENT & NEXT TASK - Branch `canva`)
+- [ ] **Fase Pemetaan & Struktur Aset Gambar**:
+  - [ ] Identifikasi dan listing ID adegan dari `src/data/cerita.ts` (Cerita 1, 2, 3) serta soal latihan.
+  - [ ] Pemetaan halaman Canva ke nama berkas standar di `public/assets/img/<id>.webp`.
+  - [ ] Penentuan strategi aset: apakah menggunakan flat background per adegan atau komponen terpisah (karakter, kartu opsi).
+  - [ ] Skrip otomatisasi konversi format (PNG/JPG -> WebP teroptimasi 1920x1080).
+- [ ] **Fase Integrasi Audio**:
+  - [ ] Pemetaan file narasi & efek suara ke `public/assets/audio/<id>.mp3`.
 
 ---
 
 ## 3. Catatan Arsitektur Penting untuk AI Selanjutnya
-- Jangan pasang library router eksternal (gunakan state layar bawaan di `App.tsx`).
-- Touch target minimal setara 64px (ramah anak/motorik halus).
-- Kalkulasi bintang sesi: Maksimal 3 dari Cerita (1 per judul), maksimal 4 dari Latihan (skor terbaik). Total sesi = maksimal 7 bintang.
+- Branch `canva` dikhususkan untuk visual slicing & asset replacement. Jangan mengubah arsitektur state di `App.tsx` kecuali untuk penyesuaian binding aset.
+- Pertahankan aspek rasio 16:9 dan touch target minimal 64px.

@@ -1,5 +1,7 @@
 node_modules
 dist
+.venv
+venv
 *.local
 .DS_Store
 graphify-out/cache/
