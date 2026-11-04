@@ -34,8 +34,10 @@ test('alur cerita 2 (berbagi) dan cerita 3 (perubahan) sesuai PRD §6 & I2 (AC-0
   )
   const pilihBerbagi = berbagi.langkah[4]
   assert.equal(pilihBerbagi.jenis, 'pilihan')
-  assert.equal(pilihBerbagi.ulang.id, 'berbagi-ulang')
-  assert.equal(pilihBerbagi.ulang.hal, '6/6')
+  if (pilihBerbagi.jenis === 'pilihan') {
+    assert.equal(pilihBerbagi.ulang.id, 'berbagi-ulang')
+    assert.equal(pilihBerbagi.ulang.hal, '6/6')
+  }
 
   const perubahan = CERITA.find((c) => c.id === 'perubahan')!
   assert.deepEqual(
@@ -53,8 +55,10 @@ test('alur cerita 2 (berbagi) dan cerita 3 (perubahan) sesuai PRD §6 & I2 (AC-0
   )
   const pilihPerubahan = perubahan.langkah[3]
   assert.equal(pilihPerubahan.jenis, 'pilihan')
-  assert.equal(pilihPerubahan.ulang.id, 'perubahan-ulang')
-  assert.equal(pilihPerubahan.ulang.hal, '5/6')
+  if (pilihPerubahan.jenis === 'pilihan') {
+    assert.equal(pilihPerubahan.ulang.id, 'perubahan-ulang')
+    assert.equal(pilihPerubahan.ulang.hal, '5/6')
+  }
 
   assert.equal(ceritaBerikutnya('giliran'), 'berbagi')
   assert.equal(ceritaBerikutnya('berbagi'), 'perubahan')

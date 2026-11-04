@@ -8,6 +8,7 @@
     "types": ["vite/client"],
     "strict": true,
     "noEmit": true,
+    "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "verbatimModuleSyntax": true,
     "erasableSyntaxOnly": true,
@@ -15,7 +16,6 @@
     "noUnusedParameters": true,
     "skipLibCheck": true
   },
-  "include": ["src", "vite.config.ts"],
-  "exclude": ["src/**/*.test.ts"]
+  "include": ["src", "vite.config.ts"]
 }
 
