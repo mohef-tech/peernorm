@@ -1,0 +1,622 @@
+/* Draft tanpa arahan desain (antislop R-37): arah visual final mengikuti storyboard Canva klien.
+   Dial ENERGY 1 / RHYTHM 1 / MOTION 1. Semua ukuran dalam piksel panggung 1920x1080. */
+
+:root {
+  --kertas: #f3eee4; /* latar hangat dan tenang untuk anak, bukan putih steril */
+  --tinta: #1f2a2e;
+  --tinta-lembut: #4a5559; /* 6,9:1 di atas --kertas */
+  --utama: #1d6b6b; /* satu warna aksi; teks putih 6,4:1 */
+  --utama-gelap: #155252;
+  --utama-pucat: #e3efee;
+  --bintang: #e0a100; /* hanya untuk bintang dan lencana aktif: warna hadiah */
+  --garis: #d8cfbf;
+  --benar: #2f7a3d;
+  --salah: #b3261e;
+  --letterbox: #2a3336;
+  /* shortcut: font sistem sampai padanan gratis font Canva dipilih (PRD §10.1). */
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--tinta);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: var(--letterbox);
+  overflow: hidden;
+  overscroll-behavior: none;
+  /* Sentuhan anak: tanpa zoom dua-ketuk, tanpa seleksi teks, tanpa kilatan sentuh (PRD §11.2). */
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+:focus-visible {
+  outline: 6px solid var(--utama);
+  outline-offset: 6px;
+}
+
+h1 {
+  font-size: 72px;
+  line-height: 1.2;
+}
+
+/* ---- Panggung ---- */
+
+.layar-luar {
+  position: fixed;
+  inset: 0;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.panggung {
+  position: relative;
+  flex: none;
+  width: 1920px;
+  height: 1080px;
+  background: var(--kertas);
+  overflow: hidden;
+  font-size: 40px;
+  line-height: 1.4;
+}
+
+.layar {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  padding: 160px 200px;
+  text-align: center;
+}
+
+/* ---- Tombol: sasaran sentuh >= 64px panggung (PRD §11.2) ---- */
+
+.tombol {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  min-height: 120px;
+  padding: 0 64px;
+  border-radius: 28px;
+  font-weight: 700;
+  transition: transform 0.15s, box-shadow 0.15s, background-color 0.15s;
+}
+
+/* Satu-satunya elevasi: alas bawah memberi tanda "bisa ditekan" dan turun saat ditekan. */
+.tombol-utama {
+  background: var(--utama);
+  color: #fff;
+  box-shadow: 0 8px 0 var(--utama-gelap);
+}
+
+.tombol-kedua,
+.tombol-kecil {
+  background: #fff;
+  border: 4px solid var(--garis);
+}
+
+.tombol-kecil {
+  min-height: 88px;
+  padding: 0 36px;
+  border-radius: 20px;
+  font-size: 32px;
+}
+
+.tombol-kecil svg {
+  width: 44px;
+  height: 44px;
+}
+
+.tombol-utama:active {
+  transform: translateY(6px);
+  box-shadow: 0 2px 0 var(--utama-gelap);
+}
+
+.tombol-kedua:active,
+.tombol-kecil:active {
+  background: var(--utama-pucat);
+}
+
+@media (hover: hover) {
+  .tombol-utama:hover {
+    background: #227a7a;
+  }
+  .tombol-kedua:hover,
+  .tombol-kecil:hover {
+    border-color: var(--utama);
+  }
+}
+
+.tombol-beranda {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}
+
+.baris-tombol {
+  display: flex;
+  gap: 48px;
+}
+
+/* ---- Splash, Mulai ---- */
+
+.logo {
+  font-size: 160px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--utama);
+}
+
+.tagline {
+  font-size: 48px;
+  color: var(--tinta-lembut);
+}
+
+.bilah {
+  width: 900px;
+  height: 40px;
+  border-radius: 20px;
+  background: #fff;
+  border: 4px solid var(--garis);
+  overflow: hidden;
+}
+
+.bilah > div {
+  height: 100%;
+  background: var(--utama);
+  transition: width 0.3s;
+}
+
+.tombol-play {
+  display: grid;
+  place-items: center;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: var(--utama);
+  color: #fff;
+  box-shadow: 0 10px 0 var(--utama-gelap);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.tombol-play:active {
+  transform: translateY(8px);
+  box-shadow: 0 2px 0 var(--utama-gelap);
+}
+
+.tombol-play svg {
+  width: 120px;
+  height: 120px;
+  margin-left: 16px;
+}
+
+/* ---- Profil, Menu ---- */
+
+.judul-dengan-suara {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.daftar-profil {
+  display: flex;
+  gap: 56px;
+}
+
+.tombol-profil {
+  flex-direction: column;
+  min-width: 380px;
+  min-height: 240px;
+  font-size: 56px;
+}
+
+.total-profil {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 40px;
+}
+
+/* Enam pilihan setara bobotnya bagi anak, jadi ukurannya sengaja seragam. */
+.grid-menu {
+  display: grid;
+  grid-template-columns: repeat(3, 440px);
+  gap: 40px;
+}
+
+.grid-menu .tombol {
+  min-height: 160px;
+  font-size: 44px;
+}
+
+.tombol-panduan {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+}
+
+.penghitung {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 56px;
+  font-weight: 800;
+}
+
+/* ---- Bintang, Lencana ---- */
+
+.ikon-bintang {
+  width: 1em;
+  height: 1em;
+  fill: none;
+  stroke: var(--garis);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+
+.ikon-bintang.terisi {
+  fill: var(--bintang);
+  stroke: #b07e00;
+}
+
+.baris-bintang {
+  display: flex;
+  gap: 24px;
+  font-size: 120px;
+}
+
+.lencana {
+  display: flex;
+  gap: 40px;
+  padding: 0;
+  list-style: none;
+}
+
+.lencana li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 400px;
+  padding: 32px;
+  border: 4px solid var(--garis);
+  border-radius: 28px;
+  background: #fff;
+}
+
+.lencana li.aktif {
+  border: 8px solid var(--bintang);
+  background: #fff6dc;
+  font-size: 56px;
+}
+
+.lencana strong {
+  font-size: 40px;
+}
+
+.lencana span {
+  font-size: 32px;
+  color: var(--tinta-lembut);
+}
+
+/* ---- Kartu (pilih cerita, pilihan, latihan) ---- */
+
+.kartu {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  min-height: 320px;
+  padding: 48px;
+  border: 6px solid var(--garis);
+  border-radius: 32px;
+  background: #fff;
+  font-weight: 700;
+  font-size: 48px;
+  transition: border-color 0.15s, background-color 0.15s, opacity 0.15s;
+}
+
+.kartu:active,
+.kartu.dipilih {
+  border-color: var(--utama);
+  background: var(--utama-pucat);
+}
+
+.kartu:disabled {
+  opacity: 0.5;
+}
+
+@media (hover: hover) {
+  .kartu:not(:disabled):hover {
+    border-color: var(--utama);
+  }
+}
+
+.kartu-pilihan,
+.grid-cerita {
+  display: grid;
+  gap: 64px;
+}
+
+.kartu-pilihan {
+  grid-template-columns: repeat(2, 640px);
+}
+
+.grid-cerita {
+  grid-template-columns: repeat(3, 460px);
+}
+
+.nomor {
+  display: grid;
+  place-items: center;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--utama);
+  color: #fff;
+}
+
+.tanda {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  display: grid;
+  place-items: center;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 64px;
+}
+
+.tanda.benar {
+  background: var(--benar);
+}
+
+.tanda.salah {
+  background: var(--salah);
+}
+
+/* ---- Ikon suara ---- */
+
+.ikon-suara {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  min-width: 120px;
+  height: 120px;
+  border-radius: 60px;
+  border: 4px solid var(--garis);
+  background: #fff;
+  color: var(--utama);
+  font-weight: 700;
+}
+
+.ikon-suara.dengan-label {
+  padding: 0 48px;
+}
+
+.ikon-suara svg {
+  width: 64px;
+  height: 64px;
+}
+
+.ikon-suara[aria-pressed='true'] {
+  background: var(--utama);
+  border-color: var(--utama);
+  color: #fff;
+}
+
+/* ---- Cerita ---- */
+
+.layar-cerita {
+  justify-content: flex-end;
+}
+
+.adegan {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pita {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 20px 64px;
+  border-radius: 0 0 28px 28px;
+  background: var(--utama);
+  color: #fff;
+  font-weight: 700;
+}
+
+.hal {
+  position: absolute;
+  top: 48px;
+  right: 56px;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--tinta-lembut);
+}
+
+/* Panel putih menjaga kontras teks di atas gambar adegan apa pun. */
+.panel-teks {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  max-width: 1400px;
+  padding: 40px 56px;
+  border-radius: 32px;
+  background: #fff;
+  font-size: 44px;
+  text-align: left;
+}
+
+.layar-cerita > :not(.adegan) {
+  position: relative;
+}
+
+.layar-cerita > .pita,
+.layar-cerita > .hal,
+.layar-cerita > .panah {
+  position: absolute;
+}
+
+.panah {
+  display: grid;
+  place-items: center;
+  bottom: 64px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: var(--utama);
+  color: #fff;
+  box-shadow: 0 8px 0 var(--utama-gelap);
+}
+
+.panah:active {
+  transform: translateY(6px);
+  box-shadow: 0 2px 0 var(--utama-gelap);
+}
+
+.panah svg {
+  width: 72px;
+  height: 72px;
+}
+
+.panah-kiri {
+  left: 64px;
+}
+
+.panah-kanan {
+  right: 64px;
+}
+
+/* ---- Latihan, Hasil, Petunjuk, Panduan, Keluar ---- */
+
+.sampul-latihan {
+  font-size: 160px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--utama);
+}
+
+.tanya {
+  max-width: 1400px;
+  font-size: 56px;
+}
+
+.pesan-besar {
+  font-size: 64px;
+  font-weight: 700;
+}
+
+.daftar-petunjuk {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 44px;
+  text-align: left;
+}
+
+.daftar-petunjuk li::marker {
+  font-weight: 800;
+  color: var(--utama);
+}
+
+.layar-teks {
+  justify-content: flex-start;
+  text-align: left;
+  align-items: flex-start;
+}
+
+.penanda {
+  color: var(--tinta-lembut);
+}
+
+.latar-dialog {
+  background: rgb(31 42 46 / 0.55);
+}
+
+.dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+  padding: 80px 120px;
+  border-radius: 40px;
+  background: #fff;
+}
+
+/* ---- Overlay portrait (PRD §5, AC-16) ---- */
+
+.putar-layar {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  place-items: center;
+  padding: 24px;
+  background: var(--kertas);
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+}
+
+@media (orientation: portrait) {
+  .putar-layar {
+    display: grid;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
