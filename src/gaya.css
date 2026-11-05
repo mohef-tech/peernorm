@@ -884,3 +884,286 @@ h1 {
   margin-left: -120px;
   z-index: 4;
 }
+
+/* =========================================
+   LAYAR MENU UTAMA (S03)
+   ========================================= */
+
+/* =========================================
+   LAYAR MENU UTAMA (S04)
+   ========================================= */
+
+.layar-menu {
+  padding: 0;
+  /* Fallback transisi latar serupa splash */
+  background: linear-gradient(180deg, #9ad0f5 0%, #cce8fb 52%, #9dc679 52%, var(--kertas) 100%);
+}
+
+.menu-lapis {
+  position: absolute;
+}
+
+/* Layer Latar */
+.menu-latar {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Header Kiri (Halo teman) */
+.menu-halo {
+  top: 72px;
+  left: 80px;
+  height: 96px;
+  width: auto;
+  object-fit: contain;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.menu-halo-fallback {
+  top: 80px;
+  left: 80px;
+  margin: 0;
+  z-index: 2;
+}
+
+/* Header Kanan (Skor Bintang) */
+.menu-bintang-grup {
+  top: 72px;
+  right: 80px;
+  width: 290px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 2;
+}
+
+.menu-bintang-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.menu-bintang-skor {
+  position: relative;
+  font-size: 56px;
+  font-weight: 800;
+  color: var(--tinta);
+  margin-right: 48px;
+  margin-top: -4px;
+  z-index: 3;
+}
+
+/* Grid 3x2 Menu */
+.menu-grid-kartu {
+  top: 240px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 56px;
+  z-index: 3;
+}
+
+.menu-tombol-kartu {
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  touch-action: manipulation;
+}
+
+.menu-tombol-kartu img {
+  width: 480px;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .menu-tombol-kartu:hover {
+    transform: scale(1.05);
+  }
+}
+
+.menu-tombol-kartu:active {
+  transform: scale(0.96);
+}
+
+/* Z-Index agar Tombol Panduan lama (S13) tidak tertimpa latar belakang */
+.menu-panduan-mengambang {
+  z-index: 4;
+}
+
+/* =========================================
+   LAYAR PETUNJUK (S05)
+   ========================================= */
+
+.layar-petunjuk {
+  padding: 0;
+  background: linear-gradient(180deg, #9ad0f5 0%, #cce8fb 52%, #9dc679 52%, var(--kertas) 100%);
+}
+
+.petunjuk-lapis {
+  position: absolute;
+}
+
+/* Layer Latar */
+.petunjuk-latar {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Tombol Kembali / Beranda (Pindah ke Kiri Bawah) */
+.petunjuk-tombol-kembali {
+  position: absolute;
+  bottom: 60px;
+  /* Berpindah ke bawah, sejajar dengan tombol audio di kanan */
+  left: 60px;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: #fff;
+  border: 6px solid var(--garis);
+  color: var(--utama);
+  display: grid;
+  place-items: center;
+  z-index: 10;
+  cursor: pointer;
+  box-shadow: 0 6px 0 var(--garis);
+  transition: transform 0.15s, box-shadow 0.15s;
+  touch-action: manipulation;
+}
+
+.petunjuk-tombol-kembali svg {
+  width: 48px;
+  height: 48px;
+}
+
+.petunjuk-tombol-kembali:active {
+  transform: translateY(6px);
+  box-shadow: 0 0 0 var(--garis);
+}
+
+@media (hover: hover) {
+  .petunjuk-tombol-kembali:hover {
+    border-color: var(--utama);
+    color: var(--utama-gelap);
+  }
+}
+
+/* Maskot Matahari */
+.petunjuk-matahari {
+  top: 60px;
+  left: 80px;
+  width: 220px;
+  height: auto;
+  object-fit: contain;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Judul */
+.petunjuk-judul {
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: auto;
+  object-fit: contain;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.petunjuk-judul-fallback {
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  z-index: 2;
+}
+
+/* Konten / Papan Langkah */
+.petunjuk-konten {
+  top: 220px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1020px;
+  height: auto;
+  max-height: 760px;
+  object-fit: contain;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.petunjuk-konten-fallback {
+  top: 240px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1000px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 8px solid var(--garis);
+  border-radius: 40px;
+  padding: 48px 64px;
+  z-index: 3;
+}
+
+/* Tombol Audio (Kanan Bawah) */
+.petunjuk-wadah-audio {
+  bottom: 60px;
+  right: 60px;
+  width: 400px;
+  height: 120px;
+  z-index: 5;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.petunjuk-wadah-audio:active {
+  transform: scale(0.95);
+}
+
+@media (hover: hover) {
+  .petunjuk-wadah-audio:hover {
+    transform: scale(1.05);
+  }
+}
+
+.petunjuk-gambar-audio {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.petunjuk-ikonsuara-pembungkus {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Trik Invisible Audio Wrapper: Menyembunyikan tampilan bawaan <IkonSuara> namun membiarkannya tetap bisa diklik penuh */
+.ikonsuara-tersembunyi>* {
+  opacity: 0;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  border: none;
+}
