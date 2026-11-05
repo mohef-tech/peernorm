@@ -2,12 +2,18 @@
 // Aset gagal dimuat tetap dihitung selesai agar aplikasi tidak macet.
 const BASE = (import.meta.env?.BASE_URL ?? '/') + 'assets/'
 
-// shortcut: kosong sampai gambar/musik pengganti masuk; isi path relatif terhadap public/assets/.
-export const ASET_INTI: readonly string[] = []
+// Aset visual inti yang dimuat saat layar Splash (S01).
+export const ASET_INTI: readonly string[] = [
+  'img/splash/latar-sekolah.webp',
+  'img/splash/logo-peernorm.webp',
+  'img/splash/karakter-anak.webp',
+  'img/splash/kapsul-loading.webp',
+]
 
-function muatSatu(path: string): Promise<unknown> {
+async function muatSatu(path: string): Promise<unknown> {
   if (path.endsWith('.mp3')) {
-    return fetch(BASE + path).then((r) => (r.ok ? r.blob() : Promise.reject()))
+    const r = await fetch(BASE + path)
+    return r.ok ? r.blob() : Promise.reject()
   }
   const img = new Image()
   img.src = BASE + path

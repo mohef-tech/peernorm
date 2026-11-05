@@ -6,6 +6,7 @@ import { PANDUAN } from '../data/panduan.ts'
 import { TEKS } from '../data/teks.ts'
 import { cekSuara, hentikanNarasi, musikHidup, putarNarasi } from './audio.ts'
 import { SESI_BARU, bintangSesi, lencana, selesaiCerita, selesaiLatihan } from './bintang.ts'
+import { ASET_INTI, muat } from './preload.ts'
 
 test('cerita memberi +1 bintang sekali per cerita per sesi (AC-07)', () => {
   let s = SESI_BARU
@@ -109,5 +110,12 @@ test('petunjuk, panduan, dan fallback audio tidak macet tanpa file fisik (AC-14,
   musikHidup(true)
   musikHidup(false)
   hentikanNarasi()
+})
+
+test('preload aset inti splash melaporkan progres 0..1 hingga selesai tanpa macet (AC-01)', async () => {
+  assert.equal(ASET_INTI.length, 4)
+  const jejak: number[] = []
+  await muat(ASET_INTI, (r) => jejak.push(r))
+  assert.equal(jejak[jejak.length - 1], 1)
 })
 
