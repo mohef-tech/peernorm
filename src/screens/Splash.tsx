@@ -8,7 +8,7 @@ const BASE_SPLASH = `${import.meta.env.BASE_URL}assets/img/splash/`
 
 type LapisId = 'latar' | 'logo' | 'karakter' | 'kapsul'
 
-// S01: 4 layer visual Canva di panggung 16:9 (1920x1080) + bilah progres dinamis 0%->100%; otomatis ke S02 (PRD §5).
+// S01: Layar Splash panggung 16:9 (1920x1080) + bilah progres dinamis 0%->100%; otomatis ke S02 (PRD §5).
 export function Splash({ onSiap }: { onSiap: () => void }) {
   const [rasio, setRasio] = useState(0)
   const [gagal, setGagal] = useState<Partial<Record<LapisId, boolean>>>({})
@@ -53,74 +53,76 @@ export function Splash({ onSiap }: { onSiap: () => void }) {
   const persen = Math.round(rasio * 100)
 
   return (
-    <section className="layar layar-splash">
-      {/* Layer 1 (dasar): latar sekolah full stage */}
+    <section className="layar layer-splash-stage">
+      {/* Layer 1: Latar Panggung (termasuk ilustrasi halaman sekolah & anak) */}
       {!gagal.latar && (
         <img
-          className="splash-lapis splash-latar"
+          className="layer-splash-bg"
           src={`${BASE_SPLASH}latar-sekolah.webp`}
           alt=""
-          width={1920}
-          height={1080}
-          fetchPriority="high"
-          onError={() => tandaiGagal('latar')}
+           fetchPriority="high"
+          onError={(e) => {
+            e.currentTarget.style.display = 'none'
+            tandaiGagal('latar')
+          }}
         />
       )}
 
-      {/* Layer 2 (atas tengah): judul / logo PeerNorm dengan fallback teks */}
+      {/* Layer 2: Logo PeerNorm (transparan, proporsional) */}
       {!gagal.logo ? (
         <img
-          className="splash-lapis splash-logo"
+          className="layer-splash-item layer-splash-logo"
           src={`${BASE_SPLASH}logo-peernorm.webp`}
           alt="PeerNorm"
-          width={980}
-          height={200}
           fetchPriority="high"
-          onError={() => tandaiGagal('logo')}
+          onError={(e) => {
+            e.currentTarget.style.display = 'none'
+            tandaiGagal('logo')
+          }}
         />
       ) : (
-        <h1 className="logo splash-logo-fallback">PeerNorm</h1>
+        <h1 className="logo layer-splash-logo-fallback">PeerNorm</h1>
       )}
 
-      {/* Layer 3 (tengah bawah): tiga karakter anak dengan fallback teks */}
-      {!gagal.karakter ? (
+      {/* Layer 3: Karakter Anak (opsional bila dipisah dari latar-sekolah.webp) */}
+      {!gagal.karakter && (
         <img
-          className="splash-lapis splash-karakter"
+          className="layer-splash-item layer-splash-karakter"
           src={`${BASE_SPLASH}karakter-anak.webp`}
           alt=""
-          width={630}
-          height={463}
-          fetchPriority="high"
-          onError={() => tandaiGagal('karakter')}
+          onError={(e) => {
+            e.currentTarget.style.display = 'none'
+            tandaiGagal('karakter')
+          }}
         />
-      ) : (
-        <p className="splash-karakter-fallback">{TEKS.tagline}</p>
       )}
 
-      {/* Layer 4 (bawah tengah): wadah kapsul loading + indikator progres dinamis 0%->100% */}
-      <div className="splash-kapsul-wadah">
+      {/* Layer 4: Kapsul Loading & Bilah Progres Dinamis 0% -> 100% */}
+      <div className="layer-splash-kapsul-wrap">
         {!gagal.kapsul && (
           <img
-            className="splash-lapis splash-kapsul"
+            className="layer-splash-item layer-splash-kapsul"
             src={`${BASE_SPLASH}kapsul-loading.webp`}
             alt=""
-            width={548}
-            height={74}
-            onError={() => tandaiGagal('kapsul')}
+            onError={(e) => {
+              e.currentTarget.style.display = 'none'
+              tandaiGagal('kapsul')
+            }}
           />
         )}
         <div
-          className={`bilah bilah-splash${gagal.kapsul ? ' bilah-fallback' : ''}`}
+          className={`layer-splash-progres${gagal.kapsul ? ' layer-splash-progres-fallback' : ''}`}
           role="progressbar"
           aria-label={TEKS.memuat}
           aria-valuemin={0}
           aria-valuemax={100}
           aria-valuenow={persen}
         >
-          <div className="bilah-isi" style={{ width: `${persen}%` }} />
+          <div className="layer-splash-progres-isi" style={{ width: `${persen}%` }} />
         </div>
       </div>
     </section>
   )
 }
+
 
