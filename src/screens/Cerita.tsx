@@ -44,15 +44,32 @@ const KONFIG_CERITA = {
     kotakSelesai: 'kotak-selesai.webp',
   },
   perubahan: {
-    base: `${import.meta.env.BASE_URL}assets/img/cerita/`,
+    base: `${import.meta.env.BASE_URL}assets/img/cerita/perubahan/`,
     latar: 'latar-cerita.webp',
-    adegan: ['adegan-cerita.webp', 'adegan-cerita2.webp'],
-    banner: ['banner-judul.webp', 'banner-judul8.webp'],
-    bannerKuis: `${BASE_LATIHAN}banner-judul-latihan.webp`,
-    opsi1: `${BASE_LATIHAN}opsi-respon-1.webp`,
-    opsi2: `${BASE_LATIHAN}opsi-respon-2.webp`,
-    latarUlang: 'latar-konsekuensi.webp',
+    adegan: [
+      'adegan-1.webp', // Indeks 0 (Slide 21)
+      'adegan-2.webp', // Indeks 1 (Slide 22)
+      'adegan-3.webp', // Indeks 2 (Slide 23)
+      '',              // Indeks 3 (Slide 24: Kuis Pilihan)
+      '',              // Indeks 4 (Slide 25: Hebat / Bintang)
+      'adegan-4.webp', // Indeks 5 (Slide 26: Adegan setuju main balok)
+      'adegan-5.webp', // Indeks 6 (Slide 28: Adegan tos senang)
+    ],
+    banner: [
+      'banner-judul-1.webp',
+      'banner-judul-2.webp',
+      'banner-judul-3.webp',
+      '',
+      '',
+      'banner-judul-4.webp',
+      'banner-judul-5.webp',
+    ],
+    bannerKuis: `${import.meta.env.BASE_URL}assets/img/cerita/perubahan/banner-kuis.webp`,
+    opsi1: `${import.meta.env.BASE_URL}assets/img/cerita/perubahan/opsi-respon-1.webp`,
+    opsi2: `${import.meta.env.BASE_URL}assets/img/cerita/perubahan/opsi-respon-2.webp`,
+    latarUlang: 'latar-cerita.webp',
     balonUlang: 'balon-konsekuensi.webp',
+    adeganUlang: 'adegan-konsekuensi.webp',
     kotakSelesai: 'kotak-selesai.webp',
   },
 } as const
@@ -88,7 +105,7 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
   const langkah = cerita.langkah[indeksHalaman]
   const tampil = ulang && langkah.jenis === 'pilihan' ? langkah.ulang : langkah
 
-  const modeAdegan = langkah.jenis === 'narasi'
+  const modeAdegan = langkah.jenis === 'narasi' && !ulang
   const modePilihan = langkah.jenis === 'pilihan' && !ulang
   const modeUlang = langkah.jenis === 'pilihan' && ulang
   const modeHebat = langkah.jenis === 'hebat'
@@ -208,7 +225,8 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
   const adeganImg = cfg.adegan[indeksHalaman] ?? cfg.adegan[cfg.adegan.length - 1]
   const bannerImg = cfg.banner[indeksHalaman]
   const keyBanner = `banner-${id}-${indeksHalaman}`
-  const punyaBannerBawaan = modeAdegan && Boolean(bannerImg) && !gagal[keyBanner]
+  const punyaBannerBawaan = modeAdegan && !modeUlang && Boolean(bannerImg) && !gagal[keyBanner]
+  const punyaAdeganUlang = 'adeganUlang' in cfg && Boolean(cfg.adeganUlang)
 
   const pakaiKotakUmpanBalik = modeHebat && !gagal['kotak-umpan-balik']
   const pakaiTeksBawaanKotakSelesai = modeSelesai && !gagal['kotak-selesai']
@@ -354,10 +372,24 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
           ========================================================= */}
       {modeUlang && (
         <>
+          {/* Ilustrasi adegan jika ada (khusus Cerita 3: rebutan balok) */}
+          {punyaAdeganUlang && 'adeganUlang' in cfg && (
+            <div className="cerita-wadah-adegan layar-cerita-konsekuensi-adegan">
+              <img
+                className="cerita-item cerita-adegan-img"
+                src={`${BASE_CERITA}${cfg.adeganUlang}`}
+                alt=""
+                fetchPriority="high"
+              />
+            </div>
+          )}
+
           {!gagal['balon-konsekuensi'] ? (
             <>
               <img
-                className="layar-cerita-konsekuensi-balon"
+                className={`layar-cerita-konsekuensi-balon ${
+                  punyaAdeganUlang ? 'layar-cerita-konsekuensi-balon-tengah' : ''
+                }`.trim()}
                 src={`${BASE_CERITA}${cfg.balonUlang}`}
                 alt=""
                 fetchPriority="high"
@@ -374,14 +406,16 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
 
           <button
             type="button"
-            className="layar-cerita-konsekuensi-ulangi-btn"
+            className={`layar-cerita-konsekuensi-ulangi-btn ${
+              punyaAdeganUlang ? 'layar-cerita-konsekuensi-ulangi-btn-tengah' : ''
+            }`.trim()}
             onClick={handleUlangi}
             aria-label={TEKS.cerita.ulangi}
           >
             {!gagal['tombol-ulangi'] ? (
               <img
                 className="layar-cerita-konsekuensi-ulangi-img"
-                src={`${BASE_ROOT_CERITA}tombol-ulangi.webp`}
+                src={`${BASE_CERITA}tombol-ulangi.webp`}
                 alt={TEKS.cerita.ulangi}
                 fetchPriority="high"
                 onError={(e) => {

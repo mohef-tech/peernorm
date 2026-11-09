@@ -69,14 +69,29 @@ export const CERITA: readonly Cerita[] = [
     nama: 'Menghadapi Perubahan',
     judul: 'Menghadapi perubahan',
     langkah: [
-      { jenis: 'narasi', id: 'perubahan-01', hal: '1/6', teks: 'Kamu dan temanmu sedang asyik bermain bersama membaca cerita' },
-      { jenis: 'narasi', id: 'perubahan-02', hal: '2/6', teks: 'Temanmu tiba-tiba ingin bermain balok saja' },
-      { jenis: 'narasi', id: 'perubahan-03', hal: '3/6', teks: 'Temanmu ingin permainan berubah. Kamu harus bagaimana?' },
+      {
+        jenis: 'narasi',
+        id: 'perubahan-01',
+        hal: '1/6',
+        teks: 'Kamu dan temanmu sedang asyik bermain bersama membaca cerita',
+      },
+      {
+        jenis: 'narasi',
+        id: 'perubahan-02',
+        hal: '2/6',
+        teks: 'Temanmu tiba-tiba ingin bermain balok saja',
+      },
+      {
+        jenis: 'narasi',
+        id: 'perubahan-03',
+        hal: '3/6',
+        teks: 'Temanmu ingin permainan berubah. Kamu harus bagaimana?',
+      },
       {
         jenis: 'pilihan',
         id: 'perubahan-pilih',
         hal: '4/6',
-        teks: '', // Lampiran A.4 tidak memberi teks pertanyaan; pertanyaan ada di perubahan-03.
+        teks: 'Pilih respon yang paling tepat ya!',
         benar: 'Tarik napas, tenang, terima perubahan',
         salah: 'Marah dan merebut mainan',
         ulang: {
@@ -86,15 +101,28 @@ export const CERITA: readonly Cerita[] = [
         },
       },
       // Tanpa penghitung halaman (PRD I2).
-      { jenis: 'hebat', id: 'perubahan-hebat', teks: 'Kamu memilih respon yang tepat! Temanmu jadi senang karena kamu dapat menerima perubahan dengan tenang' },
-      { jenis: 'narasi', id: 'perubahan-terima', hal: '5/6', teks: 'Kamu menerima perubahan dengan tenang. Kamu dan temanmu bermain dengan bahagia.' },
+      {
+        jenis: 'hebat',
+        id: 'perubahan-hebat',
+        teks: 'Kamu memilih respon yang tepat! Temanmu jadi senang karena kamu dapat menerima perubahan dengan tenang',
+      },
+      {
+        jenis: 'narasi',
+        id: 'perubahan-terima',
+        hal: '5/6',
+        teks: 'Kamu menerima perubahan dengan tenang. Kamu dan temanmu bermain dengan bahagia.',
+      },
       {
         jenis: 'narasi',
         id: 'perubahan-pelajaran',
         hal: '6/6',
         teks: 'Ketika rencana berubah, kamu boleh merasa kecewa. Kamu bisa menarik napas dengan tenang dan menjadi teman yang baik.',
       },
-      { jenis: 'selesai', id: 'perubahan-selesai', teks: 'Kamu sudah menyelesaikan cerita untuk menghadapi perubahan. Terus lakukan dengan tenang ya!' },
+      {
+        jenis: 'selesai',
+        id: 'perubahan-selesai',
+        teks: 'Kamu sudah menyelesaikan cerita untuk menghadapi perubahan. Terus lakukan dengan tenang ya!',
+      },
     ],
   },
 ]

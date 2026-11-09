@@ -17,11 +17,27 @@ const TOMBOL_MENU: readonly [TujuanMenu, string, string][] = [
   ['keluar', TEKS.menu.keluar, 'menu-keluar.webp'],
 ]
 
-export function Menu({ total, onPilih }: { total: number; onPilih: (tujuan: TujuanMenu) => void }) {
+export function Menu({
+  total,
+  onPilih,
+  onKeluar,
+}: {
+  total: number
+  onPilih: (tujuan: TujuanMenu) => void
+  onKeluar?: () => void
+}) {
   const [srcLatar, setSrcLatar] = useState(`${BASE_MENU}latar-menu.webp`)
   const [gagal, setGagal] = useState<Record<string, boolean>>({})
 
   const tandaiGagal = (id: string) => setGagal((s) => (s[id] ? s : { ...s, [id]: true }))
+
+  const handlePilih = (tujuan: TujuanMenu) => {
+    if (tujuan === 'keluar' && onKeluar) {
+      onKeluar()
+      return
+    }
+    onPilih(tujuan)
+  }
 
   return (
     <section className="layar layar-menu-stage">
@@ -85,7 +101,7 @@ export function Menu({ total, onPilih }: { total: number; onPilih: (tujuan: Tuju
             type="button"
             className="layar-menu-kartu-btn"
             aria-label={label}
-            onClick={() => onPilih(tujuan)}
+            onClick={() => handlePilih(tujuan)}
           >
             {!gagal[tujuan] ? (
               <img

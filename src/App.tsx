@@ -53,10 +53,10 @@ function beri(state: State, hasil: { sesi: Sesi; tambah: number }): State {
 function reducer(state: State, aksi: Aksi): State {
   switch (aksi.tipe) {
     case 'ke':
-      if (aksi.layar === 'keluar') return { ...state, keluar: true }
+      if (aksi.layar === 'keluar') return { ...state, keluar: true, layar: 'keluar' }
       return { ...state, keluar: false, layar: aksi.layar, putaran: aksi.layar === 'latihan' ? 0 : state.putaran }
     case 'tutupKeluar':
-      return { ...state, keluar: false }
+      return { ...state, keluar: false, layar: state.layar === 'keluar' ? 'menu' : state.layar }
     case 'pilihProfil':
       return { ...state, keluar: false, profil: aksi.id, sesi: SESI_BARU, layar: 'menu' }
     case 'akhiriSesi': // Menu > Profil dan Keluar > Ya (PRD A3, A14)
@@ -84,8 +84,8 @@ const awal = (): State => ({
 })
 
 const MUSIK_HIDUP: ReadonlySet<Layar> = new Set(['mulai', 'profil', 'menu']) // S02-S04 (PRD §10.3)
-// Beranda = Menu. Tidak ditampilkan di Menu sendiri dan di Profil (belum ada profil aktif); lihat alur.md.
-const TANPA_BERANDA: ReadonlySet<Layar> = new Set(['splash', 'mulai', 'profil', 'menu'])
+// Beranda = Menu. Tidak ditampilkan di Menu sendiri, Profil, dan Modal Keluar; lihat alur.md.
+const TANPA_BERANDA: ReadonlySet<Layar> = new Set(['splash', 'mulai', 'profil', 'menu', 'keluar'])
 
 export function App() {
   const [state, dispatch] = useReducer(reducer, undefined, awal)
@@ -135,7 +135,7 @@ export function App() {
         {layar === 'splash' && <Splash onSiap={keMulai} />}
         {layar === 'mulai' && <Mulai onPlay={play} />}
         {layar === 'profil' && <Profil total={state.total} onPilih={(id) => dispatch({ tipe: 'pilihProfil', id })} />}
-        {layar === 'menu' && <Menu total={totalAktif} onPilih={pilihMenu} />}
+        {layar === 'menu' && <Menu total={totalAktif} onPilih={pilihMenu} onKeluar={() => ke('keluar')} />}
         {layar === 'petunjuk' && <Petunjuk />}
         {layar === 'pilihCerita' && <PilihCerita onPilih={(id) => dispatch({ tipe: 'bukaCerita', id })} />}
         {layar === 'cerita' && (
@@ -173,7 +173,7 @@ export function App() {
           </Tombol>
         )}
 
-        {state.keluar && <Keluar onYa={keluarYa} onTidak={tutupKeluar} />}
+        {(layar === 'keluar' || state.keluar) && <Keluar onYa={keluarYa} onTidak={tutupKeluar} />}
       </Stage>
       <div className="putar-layar">
         <p>{TEKS.putarLayar}</p>
