@@ -13,27 +13,63 @@ type Props = {
 
 const JEDA_PILIH_MS = 400
 
-const BASE_CERITA = `${import.meta.env.BASE_URL}assets/img/cerita/`
+const BASE_ROOT_CERITA = `${import.meta.env.BASE_URL}assets/img/cerita/`
 const BASE_LATIHAN = `${import.meta.env.BASE_URL}assets/img/latihan/`
 const BASE_HASIL = `${import.meta.env.BASE_URL}assets/img/hasil-latihan/`
 
-// Pemetaan aset adegan & banner khusus Halaman 1/4 (indeks 0) dan Halaman 2/4 (indeks 1)
-const ADEGAN_FILES = ['adegan-cerita.webp', 'adegan-cerita2.webp'] as const
-const BANNER_FILES = ['banner-judul.webp', 'banner-judul8.webp'] as const
+// Konfigurasi aset dinamis per ID cerita (mendukung Cerita 1 & Cerita 2)
+const KONFIG_CERITA = {
+  giliran: {
+    base: `${import.meta.env.BASE_URL}assets/img/cerita/`,
+    latar: 'latar-cerita.webp',
+    adegan: ['adegan-cerita.webp', 'adegan-cerita2.webp'],
+    banner: ['banner-judul.webp', 'banner-judul8.webp'],
+    bannerKuis: `${BASE_LATIHAN}banner-judul-latihan.webp`,
+    opsi1: `${BASE_LATIHAN}opsi-respon-1.webp`,
+    opsi2: `${BASE_LATIHAN}opsi-respon-2.webp`,
+    latarUlang: 'latar-konsekuensi.webp',
+    balonUlang: 'balon-konsekuensi.webp',
+    kotakSelesai: 'kotak-selesai.webp',
+  },
+  berbagi: {
+    base: `${import.meta.env.BASE_URL}assets/img/cerita/berbagi/`,
+    latar: 'latar-kelas-hijau.webp',
+    adegan: ['adegan-1.webp', 'adegan-2.webp', 'adegan-3.webp', 'adegan-4.webp'],
+    banner: ['banner-judul-1.webp', 'banner-judul-2.webp', 'banner-judul-3.webp', 'banner-judul-4.webp'],
+    bannerKuis: `${import.meta.env.BASE_URL}assets/img/cerita/berbagi/banner-kuis.webp`,
+    opsi1: `${import.meta.env.BASE_URL}assets/img/cerita/berbagi/opsi-respon-1.webp`,
+    opsi2: `${import.meta.env.BASE_URL}assets/img/cerita/berbagi/opsi-respon-2.webp`,
+    latarUlang: 'latar-konsekuensi.webp',
+    balonUlang: 'balon-konsekuensi.webp',
+    kotakSelesai: 'kotak-selesai.webp',
+  },
+  perubahan: {
+    base: `${import.meta.env.BASE_URL}assets/img/cerita/`,
+    latar: 'latar-cerita.webp',
+    adegan: ['adegan-cerita.webp', 'adegan-cerita2.webp'],
+    banner: ['banner-judul.webp', 'banner-judul8.webp'],
+    bannerKuis: `${BASE_LATIHAN}banner-judul-latihan.webp`,
+    opsi1: `${BASE_LATIHAN}opsi-respon-1.webp`,
+    opsi2: `${BASE_LATIHAN}opsi-respon-2.webp`,
+    latarUlang: 'latar-konsekuensi.webp',
+    balonUlang: 'balon-konsekuensi.webp',
+    kotakSelesai: 'kotak-selesai.webp',
+  },
+} as const
 
 const KANDIDAT_LENCANA_HEBAT = [
   `${BASE_HASIL}lencana-hebat.webp`,
   `${BASE_HASIL}lencana-hebat.png`,
-  `${BASE_CERITA}lencana-hebat.webp`,
-  `${BASE_CERITA}lencana-hebat.png`,
+  `${BASE_ROOT_CERITA}lencana-hebat.webp`,
+  `${BASE_ROOT_CERITA}lencana-hebat.png`,
   `${BASE_LATIHAN}lencana-hebat.webp`,
 ] as const
 
 const KANDIDAT_KOTAK_UMPAN_BALIK = [
   `${BASE_HASIL}kotak-umpan-balik.webp`,
   `${BASE_HASIL}kotak-umpan-balik.png`,
-  `${BASE_CERITA}kotak-umpan-balik.webp`,
-  `${BASE_CERITA}kotak-umpan-balik.png`,
+  `${BASE_ROOT_CERITA}kotak-umpan-balik.webp`,
+  `${BASE_ROOT_CERITA}kotak-umpan-balik.png`,
   `${BASE_LATIHAN}kotak-umpan-balik.webp`,
 ] as const
 
@@ -46,15 +82,12 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
   const [opsiTerpilih, setOpsiTerpilih] = useState<number | null>(null)
   const timerPilih = useRef<number>(0)
 
+  const cfg = KONFIG_CERITA[id as keyof typeof KONFIG_CERITA] ?? KONFIG_CERITA.giliran
+  const BASE_CERITA = cfg.base
+
   const langkah = cerita.langkah[indeksHalaman]
   const tampil = ulang && langkah.jenis === 'pilihan' ? langkah.ulang : langkah
 
-  // Isolasi mode render per tahap halaman:
-  // - modeAdegan: Slide 7 & 8 (Adegan Cerita 1/4 & 2/4)
-  // - modePilihan: Slide 9 (Kuis Pilihan Respon 3/4)
-  // - modeUlang: Slide 11 (Konsekuensi / Coba Lagi)
-  // - modeHebat: Slide 10 (Umpan Balik Bintang 4/4)
-  // - modeSelesai: Slide 12 (Cerita Selesai / Apresiasi Akhir)
   const modeAdegan = langkah.jenis === 'narasi'
   const modePilihan = langkah.jenis === 'pilihan' && !ulang
   const modeUlang = langkah.jenis === 'pilihan' && ulang
@@ -70,7 +103,6 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
     window.clearTimeout(timerPilih.current)
     hentikanNarasi()
 
-    // Putar otomatis narasi saat berada di layar konsekuensi (Slide 11), apresiasi (Slide 10), atau selesai (Slide 12)
     if (ulang || langkah.jenis === 'hebat' || langkah.jenis === 'selesai') {
       setSedangPutar(true)
       putarNarasi(tampil.id, () => setSedangPutar(false))
@@ -86,7 +118,6 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
     window.clearTimeout(timerPilih.current)
     hentikanNarasi()
 
-    // Jika sedang di Slide 12 ('selesai'), panah kanan menyimpan bintang reward dan kembali ke Menu Cerita (S06)
     if (langkah.jenis === 'selesai') {
       onSelesai(cerita.id)
       onMenuCerita()
@@ -119,7 +150,6 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
     }
   }
 
-  // Tombol "Ulangi" di Slide 11: reset cerita kembali ke Halaman 1 (Slide 7, indeksHalaman = 0)
   const handleUlangi = () => {
     window.clearTimeout(timerPilih.current)
     hentikanNarasi()
@@ -128,7 +158,6 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
     setIndeksHalaman(0)
   }
 
-  // Aksi Tombol "Menu Cerita" di Slide 12
   const handleMenuCerita = () => {
     window.clearTimeout(timerPilih.current)
     hentikanNarasi()
@@ -136,7 +165,6 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
     onMenuCerita()
   }
 
-  // Aksi Tombol "Ke cerita lain" di Slide 12
   const handleCeritaLain = () => {
     window.clearTimeout(timerPilih.current)
     hentikanNarasi()
@@ -177,36 +205,25 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
     putarNarasi(tampil.id, () => setSedangPutar(false))
   }
 
-  // Aset adegan & banner khusus Halaman 1/4 (indeks 0) dan Halaman 2/4 (indeks 1)
-  const adeganImg = ADEGAN_FILES[indeksHalaman] ?? ADEGAN_FILES[ADEGAN_FILES.length - 1]
-  const bannerImg = BANNER_FILES[indeksHalaman]
-  const keyBanner = `banner-${indeksHalaman}`
-  const punyaBannerBawaan =
-    modeAdegan && id === 'giliran' && Boolean(bannerImg) && !gagal[keyBanner]
+  const adeganImg = cfg.adegan[indeksHalaman] ?? cfg.adegan[cfg.adegan.length - 1]
+  const bannerImg = cfg.banner[indeksHalaman]
+  const keyBanner = `banner-${id}-${indeksHalaman}`
+  const punyaBannerBawaan = modeAdegan && Boolean(bannerImg) && !gagal[keyBanner]
 
-  // Di Halaman 4/4 ('hebat') cerita 'giliran', teks apresiasi sudah menyatu di kotak-umpan-balik
-  const pakaiKotakUmpanBalik = modeHebat && id === 'giliran' && !gagal['kotak-umpan-balik']
-
-  // Di Slide 12 ('selesai') cerita 'giliran', teks kesimpulan sudah tertanam di kotak-selesai.webp
-  const pakaiTeksBawaanKotakSelesai =
-    modeSelesai && id === 'giliran' && !gagal['kotak-selesai']
-
-  // Latar konsekuensi khusus Slide 11 (memuat latar kelas + karakter anak cemberut di kiri)
+  const pakaiKotakUmpanBalik = modeHebat && !gagal['kotak-umpan-balik']
+  const pakaiTeksBawaanKotakSelesai = modeSelesai && !gagal['kotak-selesai']
   const pakaiLatarKonsekuensi = modeUlang && !gagal['latar-konsekuensi']
 
-  // Tombol panah kanan AKTIF di Slide 7, 8 (modeAdegan), Slide 10 (modeHebat), dan Slide 12 (modeSelesai);
-  // DIHILANGKAN di Slide 9 (modePilihan) & Slide 11 (modeUlang)
   const tampilNavKanan = (modeAdegan || modeHebat || modeSelesai) && !ulang
-  // Tombol panah kiri tampil di Slide 8, 9, 10; disembunyikan di Slide 7, Slide 11 (modeUlang), dan Slide 12 (modeSelesai)
   const tampilNavKiri = indeksHalaman > 0 && !modeUlang && !modeSelesai
 
   return (
     <section className="layar layar-cerita-panggung">
-      {/* Layer 1: Latar Panggung (latar-konsekuensi.webp saat Slide 11 aktif, atau latar-cerita.webp) */}
+      {/* Layer 1: Latar Panggung */}
       {pakaiLatarKonsekuensi ? (
         <img
           className="layar-cerita-konsekuensi-latar"
-          src={`${BASE_CERITA}latar-konsekuensi.webp`}
+          src={`${BASE_CERITA}${cfg.latarUlang}`}
           alt=""
           fetchPriority="high"
           onError={(e) => {
@@ -218,7 +235,7 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
         !gagal.latar && (
           <img
             className="cerita-latar"
-            src={`${BASE_CERITA}latar-cerita.webp`}
+            src={`${BASE_CERITA}${cfg.latar}`}
             alt=""
             fetchPriority="high"
             onError={(e) => {
@@ -230,13 +247,14 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
       )}
 
       {/* =========================================================
-          HALAMAN 1/4 & 2/4: ADEGAN CERITA BERGAMBAR NORMAL (SLIDE 7 & 8)
+          ADEGAN CERITA BERGAMBAR NORMAL
           ========================================================= */}
       {modeAdegan && (
         <>
           <div className={`cerita-wadah-adegan cerita-adegan-langkah-${indeksHalaman}`}>
             <Adegan
               key={`${id}-${indeksHalaman}-${adeganImg}`}
+              basePath={BASE_CERITA}
               imgSrc={adeganImg}
               altSrc={`${tampil.id}.webp`}
               onGagal={() => tandaiGagal(`adegan-${indeksHalaman}`)}
@@ -270,15 +288,14 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
       )}
 
       {/* =========================================================
-          HALAMAN 3/4: KUIS PILIHAN RESPON INTERAKTIF (SLIDE 9 CANVA)
-          Terisolasi penuh tanpa adegan 2 di belakangnya & tanpa nav kanan
+          KUIS PILIHAN RESPON INTERAKTIF
           ========================================================= */}
       {modePilihan && langkah.jenis === 'pilihan' && (
         <>
           {!gagal['banner-pilihan'] ? (
             <img
               className="layar-latihan-banner"
-              src={`${BASE_LATIHAN}banner-judul-latihan.webp`}
+              src={cfg.bannerKuis}
               alt={langkah.teks || cerita.judul}
               fetchPriority="high"
               onError={(e) => {
@@ -300,8 +317,8 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
             >
               {!gagal['opsi-1'] ? (
                 <GambarOpsi
-                  utama={`${BASE_LATIHAN}opsi-respon-1.webp`}
-                  cadangan={`${BASE_LATIHAN}opsi-respon-1.webp.webp`}
+                  utama={cfg.opsi1}
+                  cadangan={cfg.opsi1}
                   alt={langkah.benar}
                   onGagal={() => tandaiGagal('opsi-1')}
                 />
@@ -319,8 +336,8 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
             >
               {!gagal['opsi-2'] ? (
                 <GambarOpsi
-                  utama={`${BASE_LATIHAN}opsi-respon-2.webp`}
-                  cadangan={`${BASE_LATIHAN}opsi-respon-2.webp.webp`}
+                  utama={cfg.opsi2}
+                  cadangan={cfg.opsi2}
                   alt={langkah.salah}
                   onGagal={() => tandaiGagal('opsi-2')}
                 />
@@ -333,16 +350,15 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
       )}
 
       {/* =========================================================
-          SLIDE 11 CANVA: LAYAR KONSEKUENSI / COBA LAGI (CABANG KELIRU)
-          Mandiri tanpa menimpa kuis: balon konsekuensi + tombol ulangi ke Hal 1
+          LAYAR KONSEKUENSI / COBA LAGI (CABANG KELIRU)
           ========================================================= */}
       {modeUlang && (
         <>
-          {!gagal['balon-konsekuensi'] && id === 'giliran' ? (
+          {!gagal['balon-konsekuensi'] ? (
             <>
               <img
                 className="layar-cerita-konsekuensi-balon"
-                src={`${BASE_CERITA}balon-konsekuensi.webp`}
+                src={`${BASE_CERITA}${cfg.balonUlang}`}
                 alt=""
                 fetchPriority="high"
                 onError={(e) => {
@@ -365,7 +381,7 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
             {!gagal['tombol-ulangi'] ? (
               <img
                 className="layar-cerita-konsekuensi-ulangi-img"
-                src={`${BASE_CERITA}tombol-ulangi.webp`}
+                src={`${BASE_ROOT_CERITA}tombol-ulangi.webp`}
                 alt={TEKS.cerita.ulangi}
                 fetchPriority="high"
                 onError={(e) => {
@@ -383,8 +399,7 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
       )}
 
       {/* =========================================================
-          HALAMAN 4/4: UMPAN BALIK APRESIASI BINTANG (SLIDE 10 CANVA)
-          Terisolasi bersih: Lencana bintang di atas & kotak umpan balik di bawah
+          UMPAN BALIK APRESIASI BINTANG (HEBAT)
           ========================================================= */}
       {modeHebat && (
         <>
@@ -401,7 +416,10 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
 
           {pakaiKotakUmpanBalik && (
             <GambarKandidat
-              kandidat={KANDIDAT_KOTAK_UMPAN_BALIK}
+              kandidat={[
+                `${BASE_CERITA}kotak-umpan-balik.webp`,
+                ...KANDIDAT_KOTAK_UMPAN_BALIK,
+              ]}
               className="layar-cerita-hebat-kotak"
               alt=""
               onGagal={() => tandaiGagal('kotak-umpan-balik')}
@@ -415,16 +433,14 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
       )}
 
       {/* =========================================================
-          SLIDE 12 CANVA: LAYAR CERITA SELESAI / APRESIASI AKHIR
-          Pita atas + Kado terbuka tengah + Kotak kesimpulan bawah + 2 Tombol Kiri
+          LAYAR CERITA SELESAI / APRESIASI AKHIR
           ========================================================= */}
       {modeSelesai && (
         <>
-          {/* Layer 3: Pita Judul Atas ("Cerita Selesai") */}
           {!gagal['pita-selesai'] ? (
             <img
               className="layar-cerita-selesai-pita"
-              src={`${BASE_CERITA}pita-cerita-selesai.webp`}
+              src={`${BASE_ROOT_CERITA}pita-cerita-selesai.webp`}
               alt="Cerita Selesai"
               fetchPriority="high"
               onError={(e) => {
@@ -436,11 +452,10 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
             <h1 className="layar-cerita-selesai-pita-fallback">Cerita Selesai</h1>
           )}
 
-          {/* Layer 3: Ilustrasi Kado Terbuka di Tengah Panggung */}
           {!gagal['kado-terbuka'] && (
             <img
               className="layar-cerita-selesai-kado"
-              src={`${BASE_CERITA}kado-terbuka.webp`}
+              src={`${BASE_ROOT_CERITA}kado-terbuka.webp`}
               alt=""
               fetchPriority="high"
               onError={(e) => {
@@ -450,11 +465,10 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
             />
           )}
 
-          {/* Layer 2: Kotak Teks Kesimpulan di Bawah Tengah */}
           {pakaiTeksBawaanKotakSelesai && (
             <img
               className="layar-cerita-selesai-kotak"
-              src={`${BASE_CERITA}kotak-selesai.webp`}
+              src={`${BASE_CERITA}${cfg.kotakSelesai}`}
               alt=""
               fetchPriority="high"
               onError={(e) => {
@@ -464,7 +478,6 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
             />
           )}
 
-          {/* Layer 4: Teks Kesimpulan (sr-only bila tertanam di kotak-selesai.webp, atau tampil jelas) */}
           <p
             className={
               pakaiTeksBawaanKotakSelesai
@@ -475,7 +488,6 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
             {tampil.teks}
           </p>
 
-          {/* Layer 5 Kiri Bawah: 2 Tombol Aksi Disusun Vertikal */}
           <div className="layar-cerita-selesai-grup-kiri">
             <button
               type="button"
@@ -486,7 +498,7 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
               {!gagal['tombol-menu-cerita'] ? (
                 <img
                   className="layar-cerita-selesai-aksi-img"
-                  src={`${BASE_CERITA}tombol-menu-cerita.webp`}
+                  src={`${BASE_ROOT_CERITA}tombol-menu-cerita.webp`}
                   alt={TEKS.cerita.menuCerita}
                   fetchPriority="high"
                   onError={(e) => {
@@ -510,7 +522,7 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
               {!gagal['tombol-cerita-lain'] ? (
                 <img
                   className="layar-cerita-selesai-aksi-img"
-                  src={`${BASE_CERITA}tombol-cerita-lain.webp`}
+                  src={`${BASE_ROOT_CERITA}tombol-cerita-lain.webp`}
                   alt={TEKS.cerita.ceritaLain}
                   fetchPriority="high"
                   onError={(e) => {
@@ -528,7 +540,7 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
         </>
       )}
 
-      {/* Layer 5 Kanan Bawah: Tombol Ikon Audio */}
+      {/* Layer Navigasi Audio & Panah */}
       <button
         type="button"
         className="cerita-tombol-audio"
@@ -539,7 +551,7 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
         {!gagal.audio ? (
           <img
             className="cerita-item cerita-audio-img"
-            src={`${BASE_CERITA}ikon-audio.webp`}
+            src={`${BASE_ROOT_CERITA}ikon-audio.webp`}
             alt=""
             onError={(e) => {
               e.currentTarget.style.display = 'none'
@@ -551,7 +563,6 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
         )}
       </button>
 
-      {/* Layer 5 Kanan Bawah: Tombol Panah Navigasi Kanan */}
       {tampilNavKanan && (
         <button
           type="button"
@@ -562,7 +573,7 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
           {!gagal['nav-kanan'] ? (
             <img
               className="cerita-item cerita-nav-kanan-img"
-              src={`${BASE_CERITA}tombol-nav-kanan.webp`}
+              src={`${BASE_ROOT_CERITA}tombol-nav-kanan.webp`}
               alt=""
               onError={(e) => {
                 e.currentTarget.style.display = 'none'
@@ -575,7 +586,6 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
         </button>
       )}
 
-      {/* Layer 4 Kiri Bawah: Tombol Panah Navigasi Mundur */}
       {tampilNavKiri && (
         <button
           type="button"
@@ -587,7 +597,7 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
           {!gagal['nav-kiri'] ? (
             <img
               className="cerita-nav-kiri-img"
-              src={`${BASE_CERITA}tombol-nav-kiri.webp`}
+              src={`${BASE_ROOT_CERITA}tombol-nav-kiri.webp`}
               alt=""
               onError={(e) => {
                 e.currentTarget.style.display = 'none'
@@ -600,7 +610,6 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
         </button>
       )}
 
-      {/* Tombol Beranda (Kiri Atas -> Kembali ke S04 Menu Utama, disembunyikan di Slide 12 agar sesuai acuan Canva) */}
       {!modeSelesai && (
         <button
           type="button"
@@ -618,16 +627,23 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
 }
 
 function Adegan({
+  basePath,
   imgSrc,
   altSrc,
   onGagal,
 }: {
+  basePath: string
   imgSrc: string
   altSrc: string
   onGagal: () => void
 }) {
-  const [src, setSrc] = useState(`${BASE_CERITA}${imgSrc}`)
+  const [src, setSrc] = useState(`${basePath}${imgSrc}`)
   const [error, setError] = useState(false)
+
+  useEffect(() => {
+    setSrc(`${basePath}${imgSrc}`)
+    setError(false)
+  }, [basePath, imgSrc])
 
   if (error) return null
 
@@ -638,7 +654,7 @@ function Adegan({
       alt=""
       fetchPriority="high"
       onError={() => {
-        const kandidatAlt = `${BASE_CERITA}${altSrc}`
+        const kandidatAlt = `${basePath}${altSrc}`
         if (src !== kandidatAlt) {
           setSrc(kandidatAlt)
         } else {
@@ -662,6 +678,10 @@ function GambarOpsi({
   onGagal: () => void
 }) {
   const [src, setSrc] = useState(utama)
+
+  useEffect(() => {
+    setSrc(utama)
+  }, [utama])
 
   return (
     <img
