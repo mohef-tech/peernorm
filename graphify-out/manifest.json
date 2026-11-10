@@ -1,236 +1,782 @@
 {
   "package.json": {
     "mtime": 1793720969.4813929,
-    "seen": 1793852859.565269,
+    "seen": 1794198413.2626839,
     "ast_hash": "8ed767d5f3b2eb3aefa985d6aa859875",
     "semantic_hash": "8ed767d5f3b2eb3aefa985d6aa859875"
   },
   "skills-lock.json": {
     "mtime": 1793719918.4360087,
-    "seen": 1793852859.565276,
+    "seen": 1794198413.2626839,
     "ast_hash": "f4dde1e003d534e71690f38e10694f42",
     "semantic_hash": "f4dde1e003d534e71690f38e10694f42"
   },
   "src/App.tsx": {
-    "mtime": 1793773743.158986,
-    "seen": 1793852859.56528,
-    "ast_hash": "137cd8e6cb972d0a8bb2eb0922e39367",
-    "semantic_hash": "137cd8e6cb972d0a8bb2eb0922e39367"
+    "mtime": 1794197790.1996465,
+    "seen": 1794198413.2626839,
+    "ast_hash": "cb2570f34ffce822d43729a51de288b6",
+    "semantic_hash": "cb2570f34ffce822d43729a51de288b6"
   },
   "src/components/Bintang.tsx": {
-    "mtime": 1793773743.2077124,
-    "seen": 1793852859.565283,
+    "mtime": 1794116213.1702852,
+    "seen": 1794198413.2626839,
     "ast_hash": "7207aec0dda7235222d74b1fc9ca6a88",
     "semantic_hash": "7207aec0dda7235222d74b1fc9ca6a88"
   },
   "src/components/IkonSuara.tsx": {
     "mtime": 1793769974.6379037,
-    "seen": 1793852859.5652869,
+    "seen": 1794198413.2626839,
     "ast_hash": "420beb5782bfa84009025f81fdfe11e9",
     "semantic_hash": "420beb5782bfa84009025f81fdfe11e9"
   },
   "src/components/KartuPilihan.tsx": {
     "mtime": 1793769974.6668704,
-    "seen": 1793852859.56529,
+    "seen": 1794198413.2626839,
     "ast_hash": "2e8df13e04df57bbf2ba97bea9860fb1",
     "semantic_hash": "2e8df13e04df57bbf2ba97bea9860fb1"
   },
   "src/components/Lencana.tsx": {
     "mtime": 1793769974.6970172,
-    "seen": 1793852859.565294,
+    "seen": 1794198413.2626839,
     "ast_hash": "daf268a493cab337fd82b1d31a1508b0",
     "semantic_hash": "daf268a493cab337fd82b1d31a1508b0"
   },
   "src/components/Stage.tsx": {
     "mtime": 1793769974.7360408,
-    "seen": 1793852859.565297,
+    "seen": 1794198413.2626839,
     "ast_hash": "7643dcee30aa810bdd1439cfffbd73fb",
     "semantic_hash": "7643dcee30aa810bdd1439cfffbd73fb"
   },
   "src/components/Tombol.tsx": {
     "mtime": 1793770078.0416994,
-    "seen": 1793852859.5653,
+    "seen": 1794198413.2626839,
     "ast_hash": "9a714a04cd085b78c5ca089655a45b77",
     "semantic_hash": "9a714a04cd085b78c5ca089655a45b77"
   },
   "src/data/cerita.ts": {
-    "mtime": 1793720969.5624704,
-    "seen": 1793852859.565303,
-    "ast_hash": "4a29c1f5d4cc0f35aa52b41d28efe938",
-    "semantic_hash": "4a29c1f5d4cc0f35aa52b41d28efe938"
+    "mtime": 1794195857.7983859,
+    "seen": 1794198413.2626839,
+    "ast_hash": "fc19af1e07f11c39c10927cc7f09bd61",
+    "semantic_hash": "fc19af1e07f11c39c10927cc7f09bd61"
   },
   "src/data/latihan.ts": {
-    "mtime": 1793772854.8253314,
-    "seen": 1793852859.565307,
+    "mtime": 1794116213.1709826,
+    "seen": 1794198413.2626839,
     "ast_hash": "c44295ce4e18707cc76681cc8e7ed410",
     "semantic_hash": "c44295ce4e18707cc76681cc8e7ed410"
   },
   "src/data/panduan.ts": {
-    "mtime": 1793775118.1494033,
-    "seen": 1793852859.565311,
+    "mtime": 1794116213.173274,
+    "seen": 1794198413.2626839,
     "ast_hash": "fdd1a467a1dc77e4e126dda1efb91c67",
     "semantic_hash": "fdd1a467a1dc77e4e126dda1efb91c67"
   },
   "src/data/profil.ts": {
     "mtime": 1793720892.8813868,
-    "seen": 1793852859.565314,
+    "seen": 1794198413.2626839,
     "ast_hash": "e7bf004960719766a9410bf1bbd115d4",
     "semantic_hash": "e7bf004960719766a9410bf1bbd115d4"
   },
   "src/data/teks.ts": {
     "mtime": 1793720892.939546,
-    "seen": 1793852859.5653172,
+    "seen": 1794198413.2626839,
     "ast_hash": "8a2405e1a8d9efe1f8abb3b657a63b86",
     "semantic_hash": "8a2405e1a8d9efe1f8abb3b657a63b86"
   },
   "src/engine/audio.ts": {
-    "mtime": 1793775118.276693,
-    "seen": 1793852859.56532,
+    "mtime": 1794116213.1741972,
+    "seen": 1794198413.2626839,
     "ast_hash": "721e9f3ee8c99f4252209cafd747c016",
     "semantic_hash": "721e9f3ee8c99f4252209cafd747c016"
   },
   "src/engine/bintang.test.ts": {
-    "mtime": 1793850920.1951642,
-    "seen": 1793852859.565324,
+    "mtime": 1794116213.1755118,
+    "seen": 1794198413.2626839,
     "ast_hash": "f39f94f992662fb2d2dae878f5d67400",
     "semantic_hash": "f39f94f992662fb2d2dae878f5d67400"
   },
   "src/engine/bintang.ts": {
-    "mtime": 1793773743.2525494,
-    "seen": 1793852859.5653272,
+    "mtime": 1794116213.176757,
+    "seen": 1794198413.2626839,
     "ast_hash": "25102dec85feae06481f1293a6b75db9",
     "semantic_hash": "25102dec85feae06481f1293a6b75db9"
   },
   "src/engine/preload.ts": {
-    "mtime": 1793850963.2238736,
-    "seen": 1793852859.56533,
+    "mtime": 1794116213.1778505,
+    "seen": 1794198413.2626839,
     "ast_hash": "61679344e3a560807fe4fdbf27e9110f",
     "semantic_hash": "61679344e3a560807fe4fdbf27e9110f"
   },
   "src/engine/storage.ts": {
     "mtime": 1793720893.2608001,
-    "seen": 1793852859.565334,
+    "seen": 1794198413.2626839,
     "ast_hash": "579ce06863b50e7980a48a1f2dc084d4",
     "semantic_hash": "579ce06863b50e7980a48a1f2dc084d4"
   },
   "src/main.tsx": {
     "mtime": 1793769975.363769,
-    "seen": 1793852859.5653372,
+    "seen": 1794198413.2626839,
     "ast_hash": "9c28f6d5821f426701ac769484430733",
     "semantic_hash": "9c28f6d5821f426701ac769484430733"
   },
   "src/node-test.d.ts": {
-    "mtime": 1793775559.8700647,
-    "seen": 1793852859.5653398,
+    "mtime": 1794116213.180245,
+    "seen": 1794198413.2626839,
     "ast_hash": "c7055ec9b26feb23126574c3513f2b5a",
     "semantic_hash": "c7055ec9b26feb23126574c3513f2b5a"
   },
   "src/screens/Cerita.tsx": {
-    "mtime": 1793769975.4547353,
-    "seen": 1793852859.565344,
-    "ast_hash": "b2afab4c9ff7669617252e368a8b057f",
-    "semantic_hash": "b2afab4c9ff7669617252e368a8b057f"
+    "mtime": 1794195859.5642352,
+    "seen": 1794198413.2626839,
+    "ast_hash": "a6baa64e2c27d300efe59fa392278356",
+    "semantic_hash": "a6baa64e2c27d300efe59fa392278356"
   },
   "src/screens/Hadiah.tsx": {
     "mtime": 1793769975.4885902,
-    "seen": 1793852859.5653481,
+    "seen": 1794198413.2626839,
     "ast_hash": "db2a50826e2761344798c61a9d5d84b4",
     "semantic_hash": "db2a50826e2761344798c61a9d5d84b4"
   },
   "src/screens/HasilLatihan.tsx": {
     "mtime": 1793769975.5202029,
-    "seen": 1793852859.565352,
+    "seen": 1794198413.2626839,
     "ast_hash": "75f8e4e18841e859c4003cb5193e0dae",
     "semantic_hash": "75f8e4e18841e859c4003cb5193e0dae"
   },
   "src/screens/Keluar.tsx": {
-    "mtime": 1793769975.542454,
-    "seen": 1793852859.565355,
-    "ast_hash": "9079af215411d020f04b097e7dd79c17",
-    "semantic_hash": "9079af215411d020f04b097e7dd79c17"
+    "mtime": 1794197790.2954576,
+    "seen": 1794198413.2626839,
+    "ast_hash": "872003f81d6cb2d211e77c1ef4c4fb5f",
+    "semantic_hash": "872003f81d6cb2d211e77c1ef4c4fb5f"
   },
   "src/screens/Latihan.tsx": {
-    "mtime": 1793773031.5151367,
-    "seen": 1793852859.5653582,
-    "ast_hash": "12913d3c02beef5fffdd55347e0788f9",
-    "semantic_hash": "12913d3c02beef5fffdd55347e0788f9"
+    "mtime": 1794116213.182589,
+    "seen": 1794198413.2626839,
+    "ast_hash": "a44a911b99cc61b72d4aaaae4102d316",
+    "semantic_hash": "a44a911b99cc61b72d4aaaae4102d316"
   },
   "src/screens/Menu.tsx": {
-    "mtime": 1793769975.6150255,
-    "seen": 1793852859.565362,
-    "ast_hash": "2271485fce124f01b512f9cd72e5c57a",
-    "semantic_hash": "2271485fce124f01b512f9cd72e5c57a"
+    "mtime": 1794197790.4805362,
+    "seen": 1794198413.2626839,
+    "ast_hash": "e62abb22b0c4e682c7c33119c345bcd5",
+    "semantic_hash": "e62abb22b0c4e682c7c33119c345bcd5"
   },
   "src/screens/Mulai.tsx": {
-    "mtime": 1793769975.643544,
-    "seen": 1793852859.565365,
-    "ast_hash": "55be6ece8740daec73e94b8efc77a5d0",
-    "semantic_hash": "55be6ece8740daec73e94b8efc77a5d0"
+    "mtime": 1794116213.1844625,
+    "seen": 1794198413.2626839,
+    "ast_hash": "a5252bb01e6b691915f91af7cdc030fc",
+    "semantic_hash": "a5252bb01e6b691915f91af7cdc030fc"
   },
   "src/screens/Panduan.tsx": {
-    "mtime": 1793775118.5401108,
-    "seen": 1793852859.5653682,
+    "mtime": 1794116213.1856432,
+    "seen": 1794198413.2626839,
     "ast_hash": "c2196da7beb49172544484eda5f1a813",
     "semantic_hash": "c2196da7beb49172544484eda5f1a813"
   },
   "src/screens/Petunjuk.tsx": {
-    "mtime": 1793769975.7026026,
-    "seen": 1793852859.565372,
-    "ast_hash": "6183bc763ef6ea6e605972a51107edc6",
-    "semantic_hash": "6183bc763ef6ea6e605972a51107edc6"
+    "mtime": 1794116213.1870248,
+    "seen": 1794198413.2626839,
+    "ast_hash": "11e8e6341d321de13caefac236d53d87",
+    "semantic_hash": "11e8e6341d321de13caefac236d53d87"
   },
   "src/screens/PilihCerita.tsx": {
-    "mtime": 1793769975.7354412,
-    "seen": 1793852859.565375,
-    "ast_hash": "36c760711479fed2609e44731bd47876",
-    "semantic_hash": "36c760711479fed2609e44731bd47876"
+    "mtime": 1794116213.1880248,
+    "seen": 1794198413.2626839,
+    "ast_hash": "630d98b6e41099df749acb6b5d512c5e",
+    "semantic_hash": "630d98b6e41099df749acb6b5d512c5e"
   },
   "src/screens/Profil.tsx": {
-    "mtime": 1793769975.7792618,
-    "seen": 1793852859.565378,
-    "ast_hash": "1feb1aff9479adbbbb3c547461424555",
-    "semantic_hash": "1feb1aff9479adbbbb3c547461424555"
+    "mtime": 1794116213.1889803,
+    "seen": 1794198413.2626839,
+    "ast_hash": "6a64510d390c090d69bf589ce653aa56",
+    "semantic_hash": "6a64510d390c090d69bf589ce653aa56"
   },
   "src/screens/Splash.tsx": {
-    "mtime": 1793851540.301756,
-    "seen": 1793852859.565381,
-    "ast_hash": "38a30b33e002dc18efbc114313763416",
-    "semantic_hash": "38a30b33e002dc18efbc114313763416"
+    "mtime": 1794116213.18996,
+    "seen": 1794198413.2626839,
+    "ast_hash": "78a02634e19ab9bfab89bfbe9c9b1f26",
+    "semantic_hash": "78a02634e19ab9bfab89bfbe9c9b1f26"
   },
   "tsconfig.json": {
-    "mtime": 1793775668.6991107,
-    "seen": 1793852859.565384,
+    "mtime": 1794116213.1912792,
+    "seen": 1794198413.2626839,
     "ast_hash": "4fb8203c26b2e270967cc9d82f4dfcbd",
     "semantic_hash": "4fb8203c26b2e270967cc9d82f4dfcbd"
   },
   "vite.config.ts": {
     "mtime": 1793720893.3114977,
-    "seen": 1793852859.565388,
+    "seen": 1794198413.2626839,
     "ast_hash": "5fb4eaee87dfccde730b787f50b77c39",
     "semantic_hash": "5fb4eaee87dfccde730b787f50b77c39"
   },
   "PRD-PeerNorm.md": {
     "mtime": 1793716400.3636303,
-    "seen": 1793852859.565391,
+    "seen": 1794198413.2626839,
     "ast_hash": "8ced21b89e1beb3da5d845076b0bd48f",
     "semantic_hash": "8ced21b89e1beb3da5d845076b0bd48f"
   },
   "STATUS.md": {
-    "mtime": 1793852892.3561926,
-    "seen": 1793852910.725701,
-    "ast_hash": "8c2b9dcb7637231e8e75a6860a77568e",
-    "semantic_hash": "8c2b9dcb7637231e8e75a6860a77568e"
+    "mtime": 1794197913.5059621,
+    "seen": 1794198413.2626839,
+    "ast_hash": "83463e92bdb585e8f0c7109a0cb13b14",
+    "semantic_hash": "83463e92bdb585e8f0c7109a0cb13b14"
   },
-  "public/assets/img/mulai/latar-sekolah.webp": {
-    "mtime": 1793733160.0,
-    "seen": 1793852859.565397,
+  "alur.md": {
+    "mtime": 1793769974.5149634,
+    "seen": 1794198413.2626839,
+    "ast_hash": "89c2777f3c36bb55071c9a54cfeb25e2",
+    "semantic_hash": "89c2777f3c36bb55071c9a54cfeb25e2"
+  },
+  "index.html": {
+    "mtime": 1793720892.1298294,
+    "seen": 1794198413.2626839,
+    "ast_hash": "71a1ed52efe48362fedbc7bcc607c50a",
+    "semantic_hash": "71a1ed52efe48362fedbc7bcc607c50a"
+  },
+  "public/assets/img/cerita/adegan-cerita.webp": {
+    "mtime": 1794116213.1108108,
+    "seen": 1794198413.2626839,
+    "ast_hash": "55be5f769d16e53d32567634aa62364a",
+    "semantic_hash": "55be5f769d16e53d32567634aa62364a"
+  },
+  "public/assets/img/cerita/adegan-cerita2.webp": {
+    "mtime": 1794116213.1125984,
+    "seen": 1794198413.2626839,
+    "ast_hash": "b019a711a0507329b94cabf575afb292",
+    "semantic_hash": "b019a711a0507329b94cabf575afb292"
+  },
+  "public/assets/img/cerita/balon-konsekuensi.webp": {
+    "mtime": 1794118594.0099335,
+    "seen": 1794198413.2626839,
+    "ast_hash": "d22cb24ed0500c6d7d438d0afbde270d",
+    "semantic_hash": "d22cb24ed0500c6d7d438d0afbde270d"
+  },
+  "public/assets/img/cerita/banner-judul.webp": {
+    "mtime": 1794116213.1133785,
+    "seen": 1794198413.2626839,
+    "ast_hash": "17a5c91e7b76c3f8ee2ec78aaf6d5d2a",
+    "semantic_hash": "17a5c91e7b76c3f8ee2ec78aaf6d5d2a"
+  },
+  "public/assets/img/cerita/banner-judul8.webp": {
+    "mtime": 1794116213.114575,
+    "seen": 1794198413.2626839,
+    "ast_hash": "24111f9ded66d13b336497c7dec94504",
+    "semantic_hash": "24111f9ded66d13b336497c7dec94504"
+  },
+  "public/assets/img/cerita/berbagi/adegan-1.webp": {
+    "mtime": 1794191471.6838057,
+    "seen": 1794198413.2626839,
+    "ast_hash": "dfc16510c613a569a79ef2f2fd7fd8c8",
+    "semantic_hash": "dfc16510c613a569a79ef2f2fd7fd8c8"
+  },
+  "public/assets/img/cerita/berbagi/adegan-2.webp": {
+    "mtime": 1794191475.0176246,
+    "seen": 1794198413.2626839,
+    "ast_hash": "87f4623dd2b689fa1a27bb9e08a48415",
+    "semantic_hash": "87f4623dd2b689fa1a27bb9e08a48415"
+  },
+  "public/assets/img/cerita/berbagi/adegan-3.webp": {
+    "mtime": 1794191473.2570467,
+    "seen": 1794198413.2626839,
+    "ast_hash": "b9a1f69482b2127308f1611e03b26772",
+    "semantic_hash": "b9a1f69482b2127308f1611e03b26772"
+  },
+  "public/assets/img/cerita/berbagi/adegan-4.webp": {
+    "mtime": 1794191469.9612012,
+    "seen": 1794198413.2626839,
+    "ast_hash": "7c39478d1a6939280afa4f19661cc414",
+    "semantic_hash": "7c39478d1a6939280afa4f19661cc414"
+  },
+  "public/assets/img/cerita/berbagi/balon-konsekuensi.webp": {
+    "mtime": 1794191484.5229921,
+    "seen": 1794198413.2626839,
+    "ast_hash": "7f1e64bbffc6a95c7711faccfb4d07cd",
+    "semantic_hash": "7f1e64bbffc6a95c7711faccfb4d07cd"
+  },
+  "public/assets/img/cerita/berbagi/banner-judul-1.webp": {
+    "mtime": 1794191464.9681952,
+    "seen": 1794198413.2626839,
+    "ast_hash": "d9711e38c07b9a2bad4c25d67ec100c7",
+    "semantic_hash": "d9711e38c07b9a2bad4c25d67ec100c7"
+  },
+  "public/assets/img/cerita/berbagi/banner-judul-2.webp": {
+    "mtime": 1794191463.5277975,
+    "seen": 1794198413.2626839,
+    "ast_hash": "991eb5ad60ba84d373a163a78efa25f1",
+    "semantic_hash": "991eb5ad60ba84d373a163a78efa25f1"
+  },
+  "public/assets/img/cerita/berbagi/banner-judul-3.webp": {
+    "mtime": 1794191462.0358624,
+    "seen": 1794198413.2626839,
+    "ast_hash": "ac637f3d5802b3fb5c9667757493d68e",
+    "semantic_hash": "ac637f3d5802b3fb5c9667757493d68e"
+  },
+  "public/assets/img/cerita/berbagi/banner-judul-4.webp": {
+    "mtime": 1794191466.4774215,
+    "seen": 1794198413.2626839,
+    "ast_hash": "97fa26029085a42240f18b0e6acf8ea8",
+    "semantic_hash": "97fa26029085a42240f18b0e6acf8ea8"
+  },
+  "public/assets/img/cerita/berbagi/banner-kuis.webp": {
+    "mtime": 1794191486.060518,
+    "seen": 1794198413.2626839,
+    "ast_hash": "25b2e48a8e97749a709d34a27648c569",
+    "semantic_hash": "25b2e48a8e97749a709d34a27648c569"
+  },
+  "public/assets/img/cerita/berbagi/kotak-selesai.webp": {
+    "mtime": 1794191468.42602,
+    "seen": 1794198413.2626839,
+    "ast_hash": "82609917090a2d8d8ccabe5bffe3cd81",
+    "semantic_hash": "82609917090a2d8d8ccabe5bffe3cd81"
+  },
+  "public/assets/img/cerita/berbagi/kotak-umpan-balik.webp": {
+    "mtime": 1794191476.681743,
+    "seen": 1794198413.2626839,
+    "ast_hash": "784caf8714e4c529702adec28fe99413",
+    "semantic_hash": "784caf8714e4c529702adec28fe99413"
+  },
+  "public/assets/img/cerita/berbagi/latar-kelas-hijau.webp": {
+    "mtime": 1794191487.7891788,
+    "seen": 1794198413.2626839,
+    "ast_hash": "96f408ff32a0d5364e38cba43163e3c3",
+    "semantic_hash": "96f408ff32a0d5364e38cba43163e3c3"
+  },
+  "public/assets/img/cerita/berbagi/latar-konsekuensi.webp": {
+    "mtime": 1794191482.7517595,
+    "seen": 1794198413.2626839,
+    "ast_hash": "de8154d99c0abc90ca471dfa98e1dcdf",
+    "semantic_hash": "de8154d99c0abc90ca471dfa98e1dcdf"
+  },
+  "public/assets/img/cerita/berbagi/opsi-respon-1.webp": {
+    "mtime": 1794191479.419536,
+    "seen": 1794198413.2626839,
+    "ast_hash": "4a203cd38d9ab1ff2d0ecd41c286222d",
+    "semantic_hash": "4a203cd38d9ab1ff2d0ecd41c286222d"
+  },
+  "public/assets/img/cerita/berbagi/opsi-respon-2.webp": {
+    "mtime": 1794191480.8729007,
+    "seen": 1794198413.2626839,
+    "ast_hash": "547b44fa5ebb2b6efad38b6d4ed00c5c",
+    "semantic_hash": "547b44fa5ebb2b6efad38b6d4ed00c5c"
+  },
+  "public/assets/img/cerita/berbagi/tombol-ulangi.webp": {
+    "mtime": 1794191478.0040474,
+    "seen": 1794198413.2626839,
+    "ast_hash": "4412cbe16d1db22a6fdc8a22b0dae386",
+    "semantic_hash": "4412cbe16d1db22a6fdc8a22b0dae386"
+  },
+  "public/assets/img/cerita/ikon-audio.webp": {
+    "mtime": 1794116213.1158693,
+    "seen": 1794198413.2626839,
+    "ast_hash": "c4088fc4a8cb93f7a5ba751f99fa27cf",
+    "semantic_hash": "c4088fc4a8cb93f7a5ba751f99fa27cf"
+  },
+  "public/assets/img/cerita/kado-terbuka.webp": {
+    "mtime": 1794119441.2914999,
+    "seen": 1794198413.2626839,
+    "ast_hash": "4a6a4d8cbc553b4dc6054948179990b7",
+    "semantic_hash": "4a6a4d8cbc553b4dc6054948179990b7"
+  },
+  "public/assets/img/cerita/kotak-selesai.webp": {
+    "mtime": 1794119436.1260455,
+    "seen": 1794198413.2626839,
+    "ast_hash": "45ddb3ed0cd744d2579f791640127b25",
+    "semantic_hash": "45ddb3ed0cd744d2579f791640127b25"
+  },
+  "public/assets/img/cerita/latar-cerita.webp": {
+    "mtime": 1794116213.1169734,
+    "seen": 1794198413.2626839,
+    "ast_hash": "dffaf02c179d4feb698bc2404982cc3e",
+    "semantic_hash": "dffaf02c179d4feb698bc2404982cc3e"
+  },
+  "public/assets/img/cerita/latar-konsekuensi.webp": {
+    "mtime": 1794118592.2652857,
+    "seen": 1794198413.2626839,
+    "ast_hash": "80ad1a413ad2b4e4636ff14ce56440f2",
+    "semantic_hash": "80ad1a413ad2b4e4636ff14ce56440f2"
+  },
+  "public/assets/img/cerita/perubahan/adegan-1.webp": {
+    "mtime": 1794193490.6519544,
+    "seen": 1794198413.2626839,
+    "ast_hash": "7a44bbb2b75eb101eb1c005fe24f1fe7",
+    "semantic_hash": "7a44bbb2b75eb101eb1c005fe24f1fe7"
+  },
+  "public/assets/img/cerita/perubahan/adegan-2.webp": {
+    "mtime": 1794193493.761885,
+    "seen": 1794198413.2626839,
+    "ast_hash": "c8ecd5b95b14af46f0a012edaf538f49",
+    "semantic_hash": "c8ecd5b95b14af46f0a012edaf538f49"
+  },
+  "public/assets/img/cerita/perubahan/adegan-3.webp": {
+    "mtime": 1794193492.0899067,
+    "seen": 1794198413.2626839,
+    "ast_hash": "05097f86853183153402375b75a6707b",
+    "semantic_hash": "05097f86853183153402375b75a6707b"
+  },
+  "public/assets/img/cerita/perubahan/adegan-4.webp": {
+    "mtime": 1794193489.1527085,
+    "seen": 1794198413.2626839,
+    "ast_hash": "3a099716305c4a1bb5bb054117bd5a52",
+    "semantic_hash": "3a099716305c4a1bb5bb054117bd5a52"
+  },
+  "public/assets/img/cerita/perubahan/adegan-5.webp": {
+    "mtime": 1794193487.1923716,
+    "seen": 1794198413.2626839,
+    "ast_hash": "238e351fc4820df3044d7fe05d8205ca",
+    "semantic_hash": "238e351fc4820df3044d7fe05d8205ca"
+  },
+  "public/assets/img/cerita/perubahan/adegan-konsekuensi.webp": {
+    "mtime": 1794193497.1436992,
+    "seen": 1794198413.2626839,
+    "ast_hash": "9b00608ee2d5d04102c7df2514a19c83",
+    "semantic_hash": "9b00608ee2d5d04102c7df2514a19c83"
+  },
+  "public/assets/img/cerita/perubahan/balon-konsekuensi.webp": {
+    "mtime": 1794195506.9769633,
+    "seen": 1794198413.2626839,
+    "ast_hash": "2e5b8128a16f7d08b8a4874c13d3c119",
+    "semantic_hash": "2e5b8128a16f7d08b8a4874c13d3c119"
+  },
+  "public/assets/img/cerita/perubahan/banner-judul-1.webp": {
+    "mtime": 1794193480.204933,
+    "seen": 1794198413.2626839,
+    "ast_hash": "95632d98d98e14d193ac0501387e605b",
+    "semantic_hash": "95632d98d98e14d193ac0501387e605b"
+  },
+  "public/assets/img/cerita/perubahan/banner-judul-2.webp": {
+    "mtime": 1794193478.5772514,
+    "seen": 1794198413.2626839,
+    "ast_hash": "121ff1c8c6b886538862a7b832d67acc",
+    "semantic_hash": "121ff1c8c6b886538862a7b832d67acc"
+  },
+  "public/assets/img/cerita/perubahan/banner-judul-3.webp": {
+    "mtime": 1794193476.9749074,
+    "seen": 1794198413.2626839,
+    "ast_hash": "88911253006f2807d421c9a88fec3e61",
+    "semantic_hash": "88911253006f2807d421c9a88fec3e61"
+  },
+  "public/assets/img/cerita/perubahan/banner-judul-4.webp": {
+    "mtime": 1794193483.3051782,
+    "seen": 1794198413.2626839,
+    "ast_hash": "f1e7dc9bfb05ae07cbb9cdca117a23ab",
+    "semantic_hash": "f1e7dc9bfb05ae07cbb9cdca117a23ab"
+  },
+  "public/assets/img/cerita/perubahan/banner-judul-5.webp": {
+    "mtime": 1794193481.682477,
+    "seen": 1794198413.2626839,
+    "ast_hash": "d71e1c676a05b74a9dc766c48361b54c",
+    "semantic_hash": "d71e1c676a05b74a9dc766c48361b54c"
+  },
+  "public/assets/img/cerita/perubahan/banner-kuis.webp": {
+    "mtime": 1794195506.6169305,
+    "seen": 1794198413.2626839,
+    "ast_hash": "6317cd764f2ca4a574f9c855dba041c7",
+    "semantic_hash": "6317cd764f2ca4a574f9c855dba041c7"
+  },
+  "public/assets/img/cerita/perubahan/kotak-selesai.webp": {
+    "mtime": 1794193485.3518438,
+    "seen": 1794198413.2626839,
+    "ast_hash": "9fdb1617e9e71f2012d4aae6161cb5c4",
+    "semantic_hash": "9fdb1617e9e71f2012d4aae6161cb5c4"
+  },
+  "public/assets/img/cerita/perubahan/kotak-umpan-balik.webp": {
+    "mtime": 1794193495.581739,
+    "seen": 1794198413.2626839,
+    "ast_hash": "0209b9ff873c4f3cdcc4d0dc714c5449",
+    "semantic_hash": "0209b9ff873c4f3cdcc4d0dc714c5449"
+  },
+  "public/assets/img/cerita/perubahan/latar-cerita.webp": {
+    "mtime": 1794193498.92783,
+    "seen": 1794198413.2626839,
+    "ast_hash": "86a0a8284a3c01606bbfc3a8c4a33e79",
+    "semantic_hash": "86a0a8284a3c01606bbfc3a8c4a33e79"
+  },
+  "public/assets/img/cerita/perubahan/opsi-respon-1.webp": {
+    "mtime": 1794195506.8132167,
+    "seen": 1794198413.2626839,
+    "ast_hash": "5a6f4bba27695d2a0ac7df9cb64ce303",
+    "semantic_hash": "5a6f4bba27695d2a0ac7df9cb64ce303"
+  },
+  "public/assets/img/cerita/perubahan/opsi-respon-2.webp": {
+    "mtime": 1794193504.4169087,
+    "seen": 1794198413.2626839,
+    "ast_hash": "0c0bc5edceb4118112198f3953b1d47d",
+    "semantic_hash": "0c0bc5edceb4118112198f3953b1d47d"
+  },
+  "public/assets/img/cerita/perubahan/tombol-ulangi.webp": {
+    "mtime": 1794193500.5922408,
+    "seen": 1794198413.2626839,
+    "ast_hash": "aa76567d1fc7f997a23947cd536babdb",
+    "semantic_hash": "aa76567d1fc7f997a23947cd536babdb"
+  },
+  "public/assets/img/cerita/pita-cerita-selesai.webp": {
+    "mtime": 1794119442.978852,
+    "seen": 1794198413.2626839,
+    "ast_hash": "738f5b611bc65bda40976da7a3319fe7",
+    "semantic_hash": "738f5b611bc65bda40976da7a3319fe7"
+  },
+  "public/assets/img/cerita/tombol-cerita-lain.webp": {
+    "mtime": 1794119439.4480412,
+    "seen": 1794198413.2626839,
+    "ast_hash": "90478453fff47dd8b6cf7dcc71d0d708",
+    "semantic_hash": "90478453fff47dd8b6cf7dcc71d0d708"
+  },
+  "public/assets/img/cerita/tombol-menu-cerita.webp": {
+    "mtime": 1794119437.5210423,
+    "seen": 1794198413.2626839,
+    "ast_hash": "2106013956e782213bbb5255ea68ff3d",
+    "semantic_hash": "2106013956e782213bbb5255ea68ff3d"
+  },
+  "public/assets/img/cerita/tombol-nav-kanan.webp": {
+    "mtime": 1794116213.118094,
+    "seen": 1794198413.2626839,
+    "ast_hash": "127cb6f135d723786a1328b850ee8dac",
+    "semantic_hash": "127cb6f135d723786a1328b850ee8dac"
+  },
+  "public/assets/img/cerita/tombol-nav-kiri.webp": {
+    "mtime": 1794116213.1191301,
+    "seen": 1794198413.2626839,
+    "ast_hash": "c3732eb6bc45006bf33d2b970fa6df78",
+    "semantic_hash": "c3732eb6bc45006bf33d2b970fa6df78"
+  },
+  "public/assets/img/cerita/tombol-ulangi.webp": {
+    "mtime": 1794118590.4391544,
+    "seen": 1794198413.2626839,
+    "ast_hash": "c805e7a1dc7b6a650ea657583c2d3f04",
+    "semantic_hash": "c805e7a1dc7b6a650ea657583c2d3f04"
+  },
+  "public/assets/img/keluar/bingkai-keluar.webp": {
+    "mtime": 1794196461.5106044,
+    "seen": 1794198413.2626839,
+    "ast_hash": "87558a403ab1162d8f0aa9c92ba848f3",
+    "semantic_hash": "87558a403ab1162d8f0aa9c92ba848f3"
+  },
+  "public/assets/img/keluar/latar-keluar.webp": {
+    "mtime": 1794196456.7857888,
+    "seen": 1794198413.2626839,
+    "ast_hash": "d64e1c2d8e6fcbb4a00cfad076eaeab7",
+    "semantic_hash": "d64e1c2d8e6fcbb4a00cfad076eaeab7"
+  },
+  "public/assets/img/keluar/tombol-tidak.webp": {
+    "mtime": 1794196459.7882679,
+    "seen": 1794198413.2626839,
+    "ast_hash": "1f286033636ed76687925d0b865098aa",
+    "semantic_hash": "1f286033636ed76687925d0b865098aa"
+  },
+  "public/assets/img/keluar/tombol-ya.webp": {
+    "mtime": 1794196458.3170428,
+    "seen": 1794198413.2626839,
+    "ast_hash": "dc5235c8ec175ff765323fdb00c043ad",
+    "semantic_hash": "dc5235c8ec175ff765323fdb00c043ad"
+  },
+  "public/assets/img/latar-sekolah.webp": {
+    "mtime": 1794116213.1234457,
+    "seen": 1794198413.2626839,
     "ast_hash": "c13329c140a50575390d31d54556e5c0",
     "semantic_hash": "c13329c140a50575390d31d54556e5c0"
   },
+  "public/assets/img/latihan/banner-judul-latihan.webp": {
+    "mtime": 1794116213.1246817,
+    "seen": 1794198413.2626839,
+    "ast_hash": "79e961402b87f32f3e8d3123586297d1",
+    "semantic_hash": "79e961402b87f32f3e8d3123586297d1"
+  },
+  "public/assets/img/latihan/opsi-respon-1.webp": {
+    "mtime": 1794116213.1256666,
+    "seen": 1794198413.2626839,
+    "ast_hash": "e0dc10d24d45c1a1103e705265da7a26",
+    "semantic_hash": "e0dc10d24d45c1a1103e705265da7a26"
+  },
+  "public/assets/img/latihan/opsi-respon-2.webp": {
+    "mtime": 1794116213.1264615,
+    "seen": 1794198413.2626839,
+    "ast_hash": "479a98f0c09b6a48ffdd2863098cbb03",
+    "semantic_hash": "479a98f0c09b6a48ffdd2863098cbb03"
+  },
+  "public/assets/img/menu/latar-menu.webp": {
+    "mtime": 1794116213.1285868,
+    "seen": 1794198413.2626839,
+    "ast_hash": "35bc7d7c28cae5a01883ba9d56f3aa05",
+    "semantic_hash": "35bc7d7c28cae5a01883ba9d56f3aa05"
+  },
+  "public/assets/img/menu/menu-cerita.webp": {
+    "mtime": 1794116213.1293008,
+    "seen": 1794198413.2626839,
+    "ast_hash": "3af6d6516dbfc74beb173697f7611226",
+    "semantic_hash": "3af6d6516dbfc74beb173697f7611226"
+  },
+  "public/assets/img/menu/menu-hadiah.webp": {
+    "mtime": 1794116213.1300526,
+    "seen": 1794198413.2626839,
+    "ast_hash": "43ed3597361af770a934294708d6cf26",
+    "semantic_hash": "43ed3597361af770a934294708d6cf26"
+  },
+  "public/assets/img/menu/menu-keluar.webp": {
+    "mtime": 1794116213.1307313,
+    "seen": 1794198413.2626839,
+    "ast_hash": "1f963e0ecea68c613240a5ca383ff12c",
+    "semantic_hash": "1f963e0ecea68c613240a5ca383ff12c"
+  },
+  "public/assets/img/menu/menu-latihan.webp": {
+    "mtime": 1794116213.1314151,
+    "seen": 1794198413.2626839,
+    "ast_hash": "0847325bccc793b4c66ea9e6d410be89",
+    "semantic_hash": "0847325bccc793b4c66ea9e6d410be89"
+  },
+  "public/assets/img/menu/menu-petunjuk.webp": {
+    "mtime": 1794116213.1320362,
+    "seen": 1794198413.2626839,
+    "ast_hash": "0569c2668ce9d88b4b83cede66bc7d17",
+    "semantic_hash": "0569c2668ce9d88b4b83cede66bc7d17"
+  },
+  "public/assets/img/menu/menu-profil.webp": {
+    "mtime": 1794116213.1327207,
+    "seen": 1794198413.2626839,
+    "ast_hash": "8556aadb22fd9a7f22c99cf2aba61120",
+    "semantic_hash": "8556aadb22fd9a7f22c99cf2aba61120"
+  },
+  "public/assets/img/menu/teks-halo.webp": {
+    "mtime": 1794116213.1335883,
+    "seen": 1794198413.2626839,
+    "ast_hash": "792dafd1c1306b37d524161c9da31a01",
+    "semantic_hash": "792dafd1c1306b37d524161c9da31a01"
+  },
+  "public/assets/img/menu/wadah-bintang.webp": {
+    "mtime": 1794116213.1346421,
+    "seen": 1794198413.2626839,
+    "ast_hash": "10f0bc8d8c97ded3bbd68a6e8ae31908",
+    "semantic_hash": "10f0bc8d8c97ded3bbd68a6e8ae31908"
+  },
+  "public/assets/img/mulai/balon-teks.webp": {
+    "mtime": 1794116213.1358087,
+    "seen": 1794198413.2626839,
+    "ast_hash": "e908a748b4deabe7703f80226f9acb04",
+    "semantic_hash": "e908a748b4deabe7703f80226f9acb04"
+  },
+  "public/assets/img/mulai/latar-sekolah.webp": {
+    "mtime": 1794116213.1397982,
+    "seen": 1794198413.2626839,
+    "ast_hash": "f4ea407aafc2954abe9965f1b129951b",
+    "semantic_hash": "f4ea407aafc2954abe9965f1b129951b"
+  },
+  "public/assets/img/mulai/logo-peernorm.webp": {
+    "mtime": 1794116213.1409528,
+    "seen": 1794198413.2626839,
+    "ast_hash": "5dc73c6dc0d81be00d48c4ab090ed5d8",
+    "semantic_hash": "5dc73c6dc0d81be00d48c4ab090ed5d8"
+  },
+  "public/assets/img/mulai/tombol-play.webp": {
+    "mtime": 1794116213.1418993,
+    "seen": 1794198413.2626839,
+    "ast_hash": "a81419f5c529b578e2a9886f2beadd97",
+    "semantic_hash": "a81419f5c529b578e2a9886f2beadd97"
+  },
+  "public/assets/img/petunjuk/dengar-suara.webp": {
+    "mtime": 1794116213.1426842,
+    "seen": 1794198413.2626839,
+    "ast_hash": "1ec1107a6e43b2491e4059ac4c12746c",
+    "semantic_hash": "1ec1107a6e43b2491e4059ac4c12746c"
+  },
+  "public/assets/img/petunjuk/judul-petunjuk.webp": {
+    "mtime": 1794116213.1433709,
+    "seen": 1794198413.2626839,
+    "ast_hash": "6c8ccacb126ce0500804a6f06dc7e187",
+    "semantic_hash": "6c8ccacb126ce0500804a6f06dc7e187"
+  },
+  "public/assets/img/petunjuk/konten-petunjuk.webp": {
+    "mtime": 1794116213.1446002,
+    "seen": 1794198413.2626839,
+    "ast_hash": "97d489eca12f3902cb926ce27ed8842c",
+    "semantic_hash": "97d489eca12f3902cb926ce27ed8842c"
+  },
+  "public/assets/img/petunjuk/latar-petunjuk.webp": {
+    "mtime": 1794116213.145444,
+    "seen": 1794198413.2626839,
+    "ast_hash": "3825e605191b3c7a3e362095ec71c53e",
+    "semantic_hash": "3825e605191b3c7a3e362095ec71c53e"
+  },
+  "public/assets/img/pilih-cerita/judul-pilih-cerita.webp": {
+    "mtime": 1794116213.1466286,
+    "seen": 1794198413.2626839,
+    "ast_hash": "db3c8ddf29643295c1488e922a862edc",
+    "semantic_hash": "db3c8ddf29643295c1488e922a862edc"
+  },
+  "public/assets/img/pilih-cerita/kartu-cerita-berbagi.webp": {
+    "mtime": 1794116213.147493,
+    "seen": 1794198413.2626839,
+    "ast_hash": "8c0bdab8fbb3cd951a1357f54fd80cd8",
+    "semantic_hash": "8c0bdab8fbb3cd951a1357f54fd80cd8"
+  },
+  "public/assets/img/pilih-cerita/kartu-cerita-giliran.webp": {
+    "mtime": 1794116213.148282,
+    "seen": 1794198413.2626839,
+    "ast_hash": "9d67eb1ea41c6b7e2dac94b688e35f4d",
+    "semantic_hash": "9d67eb1ea41c6b7e2dac94b688e35f4d"
+  },
+  "public/assets/img/pilih-cerita/kartu-cerita-perubahan.webp": {
+    "mtime": 1794116213.1492994,
+    "seen": 1794198413.2626839,
+    "ast_hash": "fbf72a47d40a6a7f9f6da739ffd38fc9",
+    "semantic_hash": "fbf72a47d40a6a7f9f6da739ffd38fc9"
+  },
+  "public/assets/img/pilih-cerita/latar-pilih-cerita.webp": {
+    "mtime": 1794116213.1501815,
+    "seen": 1794198413.2626839,
+    "ast_hash": "12402131f9cae50b8efd8c96d6750bcc",
+    "semantic_hash": "12402131f9cae50b8efd8c96d6750bcc"
+  },
+  "public/assets/img/profil/anak-anak.webp": {
+    "mtime": 1794116213.152861,
+    "seen": 1794198413.2626839,
+    "ast_hash": "928b648fe54261c29261df7ee2c45ae6",
+    "semantic_hash": "928b648fe54261c29261df7ee2c45ae6"
+  },
+  "public/assets/img/profil/judul-profil.webp": {
+    "mtime": 1794116213.1539176,
+    "seen": 1794198413.2626839,
+    "ast_hash": "f265bb2cbbc25287ed4154eae2233e79",
+    "semantic_hash": "f265bb2cbbc25287ed4154eae2233e79"
+  },
+  "public/assets/img/profil/kartu-profil-1.webp": {
+    "mtime": 1794116213.1551776,
+    "seen": 1794198413.2626839,
+    "ast_hash": "960558984cd5d65866c1f9bd3c6819ff",
+    "semantic_hash": "960558984cd5d65866c1f9bd3c6819ff"
+  },
+  "public/assets/img/profil/kartu-profil-2.webp": {
+    "mtime": 1794116213.1565006,
+    "seen": 1794198413.2626839,
+    "ast_hash": "03432f08111482ba4eb7dcdb6ffbf08b",
+    "semantic_hash": "03432f08111482ba4eb7dcdb6ffbf08b"
+  },
+  "public/assets/img/profil/kartu-profil-3.webp": {
+    "mtime": 1794116213.1575255,
+    "seen": 1794198413.2626839,
+    "ast_hash": "94f792895bd8a48fc1e37f5ff3d4c916",
+    "semantic_hash": "94f792895bd8a48fc1e37f5ff3d4c916"
+  },
+  "public/assets/img/profil/latar-profil.webp": {
+    "mtime": 1794116213.158761,
+    "seen": 1794198413.2626839,
+    "ast_hash": "5a62397b1e226b6a9cdba6034fd30d48",
+    "semantic_hash": "5a62397b1e226b6a9cdba6034fd30d48"
+  },
+  "public/assets/img/splash/kapsul-loading.webp": {
+    "mtime": 1794116213.1604605,
+    "seen": 1794198413.2626839,
+    "ast_hash": "a42a6b28671decae3ec7dc4afdb1fedb",
+    "semantic_hash": "a42a6b28671decae3ec7dc4afdb1fedb"
+  },
   "public/assets/img/splash/latar-sekolah.webp": {
-    "mtime": 1793851432.3522599,
-    "seen": 1793852859.565401,
-    "ast_hash": "7010c3db48531f788d871e6108e7a02c",
-    "semantic_hash": "7010c3db48531f788d871e6108e7a02c"
+    "mtime": 1794116213.1646843,
+    "seen": 1794198413.2626839,
+    "ast_hash": "d68b6f2314215b245d94d65797d475fa",
+    "semantic_hash": "d68b6f2314215b245d94d65797d475fa"
+  },
+  "public/assets/img/splash/logo-peernorm.webp": {
+    "mtime": 1794116213.1653852,
+    "seen": 1794198413.2626839,
+    "ast_hash": "5dc73c6dc0d81be00d48c4ab090ed5d8",
+    "semantic_hash": "5dc73c6dc0d81be00d48c4ab090ed5d8"
   }
 }

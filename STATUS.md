@@ -1,6 +1,6 @@
 # Status Pengerjaan Proyek PeerNorm (Handover Dokumen)
 
-Terakhir Diperbarui: 9 November 2026
+Terakhir Diperbarui: 10 November 2026
 Branch Aktif: `canva` (Eksperimen & Integrasi Aset Grafis Canva)
 Base Code: `argon` (Logika 100% lulus audit TypeScript & 8 unit tests)
 Stack: Vite + React + TypeScript + Vanilla CSS (No External Router)
@@ -43,22 +43,26 @@ Knowledge Graph: `graphify-out/` (Diperbarui secara berkala dengan Graphify)
   - Slide 27: Konsekuensi keliru bersih terisolasi + tombol ulangi.
   - Slide 29: Cerita selesai kado terbuka.
 - [x] **Layar / Modal Keluar (Slide 37 Canva di `src/screens/Keluar.tsx` & `Menu.tsx`) — Tuntas 100%**:
-  - Kartu "Keluar" di Menu Utama aktif membuka dialog konfirmasi.
-  - Layout modal 1:1: `latar-keluar.webp`, `bingkai-keluar.webp`, `tombol-ya.webp` (reset sesi ke Mulai/Profil), dan `tombol-tidak.webp` (kembali ke Menu Utama).
+- Kartu "Keluar" di Menu Utama aktif membuka dialog konfirmasi.
+- Layout modal 1:1: `latar-keluar.webp`, `bingkai-keluar.webp`, `tombol-ya.webp` (reset sesi ke Mulai/Profil), dan `tombol-tidak.webp` (kembali ke Menu Utama).
+- [x] **Modul Latihan Mandiri (Slide 30–34 Canva di `src/screens/Latihan.tsx`) — Tuntas 100%**:
+  - Slide 30: Sampul transisi pembuka modul latihan (`sampul-latihan.webp`, timer 2,5 detik).
+  - Slide 31–34: 4 soal evaluasi pemahaman dengan styling terisolasi penuh (`modul-latihan-*`).
+  - Pemetaan data statis `{ benar, salah }` langsung dari `src/data/latihan.ts` tanpa pengacakan runtime, menjaga konsistensi posisi tombol 1:1 desain acuan Canva.
+  - Background mandiri (`latar-latihan-1.webp` untuk soal 1 & 3, `latar-latihan-2.webp` untuk soal 2, `latar-latihan-4.webp` untuk soal 4) dan layer ilustrasi situasi balok khusus Soal 3 (`adegan-soal-3.webp`).
 - [x] **Verifikasi & Pengujian**: `npx tsc --noEmit` (0 error) dan `npm test` (8/8 unit test lulus).
 
 ---
 
 ## 2. Tugas Berjalan / Sesi Selanjutnya (NEXT SESSION — Branch `canva`)
 
-- [ ] **Prioritas 1 — Integrasi Visual Modul Latihan Mandiri 4 Soal (Slide 30 s.d. 35 Canva)**:
-  - Slide 30: Sampul transisi pembuka modul latihan (`Latihan.tsx`, timer 2,5 detik).
-  - Slide 31–34: 4 soal evaluasi pemahaman interaktif (layout banner atas, 2 kartu pilihan respon simetris 540x780px, highlight netral 0,4 detik, navigasi panah).
+- [ ] **Prioritas 1 — Evaluasi Akhir & Finishing Latihan (Slide 35 Canva)**:
   - Slide 35: Layar evaluasi hasil latihan perolehan maksimal 4 bintang (`HasilLatihan.tsx`).
+  - Penyesuaian mikro layouting (posisi vertikal kartu/banner agar lebih rapat ke atas).
 - [ ] **Prioritas 2 — Integrasi Visual Hadiah Bintang (Slide 36 Canva / `src/screens/Hadiah.tsx`)**:
   - Rak koleksi 7 slot bintang dan visual 3 tingkatan lencana penghargaan.
 - [ ] **Prioritas 3 — Integrasi Audio Fisik**:
-  - Penempatan 26 file narasi fisik (`public/assets/audio/<id>.mp3`) dan musik latar.
+  - Penempatan 26 file narasi fisik (`public/assets/audio/<id>.mp3`) dan musik latar. 
 
 ---
 

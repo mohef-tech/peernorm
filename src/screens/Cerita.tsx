@@ -20,13 +20,13 @@ const BASE_HASIL = `${import.meta.env.BASE_URL}assets/img/hasil-latihan/`
 // Konfigurasi aset dinamis per ID cerita (mendukung Cerita 1 & Cerita 2)
 const KONFIG_CERITA = {
   giliran: {
-    base: `${import.meta.env.BASE_URL}assets/img/cerita/`,
+    base: `${import.meta.env.BASE_URL}assets/img/cerita/giliran/`,
     latar: 'latar-cerita.webp',
     adegan: ['adegan-cerita.webp', 'adegan-cerita2.webp'],
     banner: ['banner-judul.webp', 'banner-judul8.webp'],
-    bannerKuis: `${BASE_LATIHAN}banner-judul-latihan.webp`,
-    opsi1: `${BASE_LATIHAN}opsi-respon-1.webp`,
-    opsi2: `${BASE_LATIHAN}opsi-respon-2.webp`,
+    bannerKuis: `${import.meta.env.BASE_URL}assets/img/cerita/giliran/banner-kuis.webp`,
+    opsi1: `${import.meta.env.BASE_URL}assets/img/cerita/giliran/opsi-respon-1.webp`,
+    opsi2: `${import.meta.env.BASE_URL}assets/img/cerita/giliran/opsi-respon-2.webp`,
     latarUlang: 'latar-konsekuensi.webp',
     balonUlang: 'balon-konsekuensi.webp',
     kotakSelesai: 'kotak-selesai.webp',
@@ -387,9 +387,8 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
           {!gagal['balon-konsekuensi'] ? (
             <>
               <img
-                className={`layar-cerita-konsekuensi-balon ${
-                  punyaAdeganUlang ? 'layar-cerita-konsekuensi-balon-tengah' : ''
-                }`.trim()}
+                className={`layar-cerita-konsekuensi-balon ${punyaAdeganUlang ? 'layar-cerita-konsekuensi-balon-tengah' : ''
+                  }`.trim()}
                 src={`${BASE_CERITA}${cfg.balonUlang}`}
                 alt=""
                 fetchPriority="high"
@@ -406,9 +405,8 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
 
           <button
             type="button"
-            className={`layar-cerita-konsekuensi-ulangi-btn ${
-              punyaAdeganUlang ? 'layar-cerita-konsekuensi-ulangi-btn-tengah' : ''
-            }`.trim()}
+            className={`layar-cerita-konsekuensi-ulangi-btn ${punyaAdeganUlang ? 'layar-cerita-konsekuensi-ulangi-btn-tengah' : ''
+              }`.trim()}
             onClick={handleUlangi}
             aria-label={TEKS.cerita.ulangi}
           >
