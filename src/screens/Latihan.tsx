@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { LATIHAN, acakOpsi, type Soal } from '../data/latihan'
-import { TEKS } from '../data/teks'
+import { LATIHAN, type Soal } from '../data/latihan'
 import { hentikanNarasi, putarNarasi } from '../engine/audio'
 
 const SAMPUL_MS = 2500
@@ -42,20 +41,21 @@ export function Latihan({
 
   if (sampul) {
     return (
-      <section className="layar layar-latihan-panggung">
-        {!gagal.latar && (
+      <section className="layar modul-latihan-panggung">
+        {!gagal.sampul ? (
           <img
-            className="layar-latihan-latar"
-            src={`${BASE_CERITA}latar-cerita.webp`}
-            alt=""
+            className="modul-latihan-latar"
+            src={`${BASE_LATIHAN}sampul-latihan.webp`}
+            alt="Latihan"
             fetchPriority="high"
             onError={(e) => {
               e.currentTarget.style.display = 'none'
-              tandaiGagal('latar')
+              tandaiGagal('sampul')
             }}
           />
+        ) : (
+          <h1 className="modul-latihan-sampul-judul">LATIHAN</h1>
         )}
-        <h1 className="layar-latihan-sampul-judul">{TEKS.latihan.sampul}</h1>
       </section>
     )
   }
@@ -90,7 +90,6 @@ function SoalLatihan({
   nomor,
   soal,
   onJawab,
-  onMundur,
   onKembali,
   gagalProps,
 }: {
@@ -101,7 +100,6 @@ function SoalLatihan({
   onKembali: () => void
   gagalProps: { gagal: Record<string, boolean>; tandaiGagal: (id: string) => void }
 }) {
-  const [opsi] = useState(() => acakOpsi(soal))
   const [terpilih, setTerpilih] = useState<number | null>(null)
   const [sedangPutar, setSedangPutar] = useState(false)
   const timerPilih = useRef<number>(0)
@@ -136,61 +134,80 @@ function SoalLatihan({
     putarNarasi(soal.id, () => setSedangPutar(false))
   }
 
-  const getGambarOpsi = (isBenar: boolean) =>
-    isBenar ? 'opsi-respon-1.webp' : 'opsi-respon-2.webp'
+  // Soal 1, 2, 4 memiliki latar tersendiri; Soal 3 mengikuti latar Soal 1
+  const namaLatar = nomor === 3 ? 'latar-latihan-1.webp' : `latar-latihan-${nomor}.webp`
+  const latarFile = `${BASE_LATIHAN}${namaLatar}`
+  const bannerFile = `${BASE_LATIHAN}banner-soal-${nomor}.webp`
 
   return (
-    <section className="layar layar-latihan-panggung">
-      {/* Layer 1: Latar Belakang Reusable */}
-      {!gagal.latar && (
+    <section className="layar modul-latihan-panggung">
+      {/* Layer 1: Latar Belakang Spesifik per Soal */}
+      {!gagal[`latar-${nomor}`] && (
         <img
-          className="layar-latihan-latar"
-          src={`${BASE_CERITA}latar-cerita.webp`}
+          className="modul-latihan-latar"
+          src={latarFile}
           alt=""
           fetchPriority="high"
           onError={(e) => {
             e.currentTarget.style.display = 'none'
-            tandaiGagal('latar')
+            tandaiGagal(`latar-${nomor}`)
           }}
         />
       )}
 
-      {/* Layer 2: Banner Judul Atas */}
-      {!gagal.banner ? (
+      {/* Layer 2: Banner Soal Atas */}
+      {!gagal[`banner-${nomor}`] ? (
         <img
-          className="layar-latihan-banner"
-          src={`${BASE_LATIHAN}banner-judul-latihan.webp`}
+          className="modul-latihan-banner"
+          src={bannerFile}
           alt={soal.tanya}
           fetchPriority="high"
           onError={(e) => {
             e.currentTarget.style.display = 'none'
-            tandaiGagal('banner')
+            tandaiGagal(`banner-${nomor}`)
           }}
         />
       ) : (
-        <h1 className="layar-latihan-tanya-fallback">{soal.tanya}</h1>
+        <h1 className="modul-latihan-tanya-fallback">{soal.tanya}</h1>
       )}
 
-      {/* Layer 3: Dua Kartu Respon (Acak dari latihan.ts) */}
-      <div className="layar-latihan-grup-kartu">
-        {opsi.map((o, i) => {
+      {/* Khusus Soal 3: Adegan Situasi Bermain Balok */}
+      {nomor === 3 && !gagal['adegan-3'] && (
+        <img
+          className="modul-latihan-adegan-tengah"
+          src={`${BASE_LATIHAN}adegan-soal-3.webp`}
+          alt="Situasi bermain balok"
+          fetchPriority="high"
+          onError={(e) => {
+            e.currentTarget.style.display = 'none'
+            tandaiGagal('adegan-3')
+          }}
+        />
+      )}
+
+      {/* Layer 3: Dua Kartu Respon */}
+      <div className="modul-latihan-grup-kartu">
+        {[
+          { teks: soal.benar, benar: true },
+          { teks: soal.salah, benar: false },
+        ].map((o, i) => {
           const statePilih = terpilih === i ? 'dipilih' : ''
           const keyOpsi = `opsi-${soal.id}-${i}`
           const gambarGagal = gagal[keyOpsi]
-          const fileOpsi = `${BASE_LATIHAN}${getGambarOpsi(o.benar)}`
+          const fileOpsi = `${BASE_LATIHAN}opsi-${nomor}-${i + 1}.webp`
 
           return (
             <button
               key={i}
               type="button"
-              className={`layar-latihan-kartu-opsi ${statePilih}`.trim()}
+              className={`modul-latihan-kartu-opsi ${statePilih}`.trim()}
               disabled={terpilih !== null}
               onClick={() => tanganiPilih(i, o.benar)}
               aria-label={o.teks}
             >
               {!gambarGagal ? (
                 <img
-                  className="layar-latihan-opsi-img"
+                  className="modul-latihan-opsi-img"
                   src={fileOpsi}
                   alt={o.teks}
                   fetchPriority="high"
@@ -200,47 +217,36 @@ function SoalLatihan({
                   }}
                 />
               ) : (
-                <div className="layar-latihan-kartu-fallback">{o.teks}</div>
+                <div className="modul-latihan-kartu-fallback">{o.teks}</div>
               )}
             </button>
           )
         })}
       </div>
 
-      {/* Layer 5 Kiri Bawah: Tombol Panah Navigasi Kiri */}
+      {/* Layer 4: Tombol Beranda Kiri Atas */}
       <button
         type="button"
-        className="layar-latihan-nav-btn layar-latihan-nav-kiri"
-        onClick={nomor > 1 ? onMundur : onKembali}
-        disabled={terpilih !== null}
-        aria-label="Sebelumnya"
+        className="cerita-tombol-beranda"
+        onClick={onKembali}
+        aria-label="Kembali ke Beranda"
       >
-        {!gagal['nav-kiri'] ? (
-          <img
-            className="layar-latihan-nav-kiri-img"
-            src={`${BASE_CERITA}tombol-nav-kiri.webp`}
-            alt=""
-            onError={(e) => {
-              e.currentTarget.style.display = 'none'
-              tandaiGagal('nav-kiri')
-            }}
-          />
-        ) : (
-          <span className="layar-latihan-fallback-kotak">{'<<'}</span>
-        )}
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+        </svg>
       </button>
 
-      {/* Layer 5 Kanan Bawah (Samping Panah Kanan): Tombol Ikon Audio */}
+      {/* Layer 5: Tombol Audio Kanan Bawah */}
       <button
         type="button"
-        className="layar-latihan-audio-btn"
+        className="modul-latihan-audio-btn"
         aria-label="Dengarkan soal"
         aria-pressed={sedangPutar}
         onClick={handleAudio}
       >
         {!gagal.audio ? (
           <img
-            className="layar-latihan-audio-img"
+            className="modul-latihan-audio-img"
             src={`${BASE_CERITA}ikon-audio.webp`}
             alt=""
             onError={(e) => {
@@ -249,30 +255,7 @@ function SoalLatihan({
             }}
           />
         ) : (
-          <span className="layar-latihan-fallback-kotak">Audio</span>
-        )}
-      </button>
-
-      {/* Layer 5 Kanan Bawah: Tombol Panah Navigasi Kanan */}
-      <button
-        type="button"
-        className="layar-latihan-nav-btn layar-latihan-nav-kanan"
-        onClick={() => onJawab(false)}
-        disabled={terpilih !== null}
-        aria-label="Berikutnya"
-      >
-        {!gagal['nav-kanan'] ? (
-          <img
-            className="layar-latihan-nav-kanan-img"
-            src={`${BASE_CERITA}tombol-nav-kanan.webp`}
-            alt=""
-            onError={(e) => {
-              e.currentTarget.style.display = 'none'
-              tandaiGagal('nav-kanan')
-            }}
-          />
-        ) : (
-          <span className="layar-latihan-fallback-kotak">{'>>'}</span>
+          <span className="modul-latihan-fallback-kotak">Audio</span>
         )}
       </button>
     </section>
