@@ -5,7 +5,6 @@ import { hentikanNarasi, putarNarasi } from '../engine/audio'
 const SAMPUL_MS = 2500
 const JEDA_PILIHAN_MS = 400
 
-const BASE_CERITA = `${import.meta.env.BASE_URL}assets/img/cerita/`
 const BASE_LATIHAN = `${import.meta.env.BASE_URL}assets/img/latihan/`
 
 export function Latihan({
@@ -134,8 +133,8 @@ function SoalLatihan({
     putarNarasi(soal.id, () => setSedangPutar(false))
   }
 
-  // Soal 1, 2, 4 memiliki latar tersendiri; Soal 3 mengikuti latar Soal 1
-  const namaLatar = nomor === 3 ? 'latar-latihan-1.webp' : `latar-latihan-${nomor}.webp`
+  // Soal 1, 4 memiliki latar tersendiri; Soal 3 mengikuti latar Soal 2
+  const namaLatar = nomor === 3 ? 'latar-latihan-2.webp' : `latar-latihan-${nomor}.webp`
   const latarFile = `${BASE_LATIHAN}${namaLatar}`
   const bannerFile = `${BASE_LATIHAN}banner-soal-${nomor}.webp`
 
@@ -157,16 +156,21 @@ function SoalLatihan({
 
       {/* Layer 2: Banner Soal Atas */}
       {!gagal[`banner-${nomor}`] ? (
-        <img
-          className="modul-latihan-banner"
-          src={bannerFile}
-          alt={soal.tanya}
-          fetchPriority="high"
-          onError={(e) => {
-            e.currentTarget.style.display = 'none'
-            tandaiGagal(`banner-${nomor}`)
-          }}
-        />
+        <>
+          <img
+            className="modul-latihan-banner"
+            src={bannerFile}
+            alt={soal.tanya}
+            fetchPriority="high"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none'
+              tandaiGagal(`banner-${nomor}`)
+            }}
+          />
+          {nomor === 3 && (
+            <p className="modul-latihan-tanya-soal3">{soal.tanya}</p>
+          )}
+        </>
       ) : (
         <h1 className="modul-latihan-tanya-fallback">{soal.tanya}</h1>
       )}
@@ -247,7 +251,7 @@ function SoalLatihan({
         {!gagal.audio ? (
           <img
             className="modul-latihan-audio-img"
-            src={`${BASE_CERITA}ikon-audio.webp`}
+            src={`${BASE_LATIHAN}ikon-audio.webp`}
             alt=""
             onError={(e) => {
               e.currentTarget.style.display = 'none'
