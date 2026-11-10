@@ -158,10 +158,11 @@ export function App() {
           <HasilLatihan
             benar={state.hasilLatihan}
             onUlangi={() => dispatch({ tipe: 'ulangiLatihan' })}
-            onMenuCerita={keMenuCerita}
+            onKeHadiah={() => ke('hadiah')}
+            onKembali={keMenu}
           />
         )}
-        {layar === 'hadiah' && <Hadiah bintangSesi={bintangSesi(state.sesi)} />}
+        {layar === 'hadiah' && <Hadiah bintangSesi={bintangSesi(state.sesi)} onKembali={keMenu} />}
         {layar === 'panduan' && <Panduan />}
 
         {!TANPA_BERANDA.has(layar) && (

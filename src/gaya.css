@@ -2794,3 +2794,240 @@ h1 {
   font-weight: 800;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
 }
+
+/* ==========================================================================
+   MODUL HASIL LATIHAN (Slide 35 Canva) - Terisolasi Penuh
+   ========================================================================== */
+
+.modul-hasil-panggung {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modul-hasil-latar {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.modul-hasil-bingkai {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1040px;
+  height: auto;
+  max-height: 860px;
+  object-fit: contain;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.modul-hasil-kontainer-bintang {
+  position: absolute;
+  top: 59%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modul-hasil-bintang-img {
+  width: 500px;
+  height: auto;
+  object-fit: contain;
+}
+
+.modul-hasil-baris-tombol {
+  position: absolute;
+  bottom: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 36px;
+  z-index: 4;
+}
+
+.modul-hasil-tombol-aksi {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.15s ease, filter 0.15s ease;
+  display: inline-flex;
+}
+
+.modul-hasil-tombol-aksi:hover {
+  transform: scale(1.04);
+}
+
+.modul-hasil-tombol-aksi:active {
+  transform: scale(0.96);
+}
+
+.modul-hasil-tombol-aksi img {
+  height: 200px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* ==========================================================================
+   MODUL HADIAH BINTANG (Slide 36 Canva) - Terisolasi Penuh
+   ========================================================================== */
+
+.modul-hadiah-panggung {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modul-hadiah-latar {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.modul-hadiah-bingkai {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1300px;
+  height: auto;
+  max-height: 840px;
+  object-fit: contain;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Karakter Anak & Wadah Krem Bawah */
+.modul-hadiah-karakter {
+  position: absolute;
+  bottom: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1540px;
+  height: 543px;
+  object-fit: contain;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* 7 Deretan Bintang */
+.modul-hadiah-deretan-bintang {
+  position: absolute;
+  top: 290px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  z-index: 10;
+}
+
+.modul-hadiah-bintang-item {
+  width: 124px;
+  height: 112px;
+  object-fit: contain;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.modul-hadiah-bintang-item.aktif {
+  filter: drop-shadow(0 6px 12px rgba(255, 180, 0, 0.45));
+}
+
+.modul-hadiah-bintang-item.redup {
+  filter: grayscale(1) opacity(0.25);
+}
+
+/* Pesan Teks Tengah */
+.modul-hadiah-pesan {
+  position: absolute;
+  top: 440px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 10;
+  width: 100%;
+}
+
+.modul-hadiah-pesan-baris1,
+.modul-hadiah-pesan-baris2 {
+  margin: 0;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.35;
+  color: #432411;
+}
+
+/* Rak 3 Lencana (Duduk manis di dalam wadah krem karakter) */
+.modul-hadiah-rak-lencana {
+  position: absolute;
+  bottom: 230px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  z-index: 10;
+}
+
+.modul-hadiah-kartu-lencana {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.modul-hadiah-label-bintang {
+  font-size: 22px;
+  font-weight: 700;
+  color: #532d16;
+}
+
+.modul-hadiah-kartu-lencana img {
+  width: auto;
+  height: 160px;
+  object-fit: contain;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.modul-hadiah-kartu-lencana.aktif img {
+  transform: scale(1.05);
+}
+
+.modul-hadiah-kartu-lencana.redup img {
+  filter: grayscale(0.85) opacity(0.35);
+}
+
+.modul-hadiah-titik-penghubung {
+  color: #cbd5e1;
+  font-size: 28px;
+  letter-spacing: 6px;
+  user-select: none;
+  margin-top: 30px;
+}
