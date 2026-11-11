@@ -105,9 +105,13 @@ function SoalLatihan({
   const { gagal, tandaiGagal } = gagalProps
 
   useEffect(() => {
-    setSedangPutar(false)
     window.clearTimeout(timerPilih.current)
     hentikanNarasi()
+
+    // Langsung putar narasi pertanyaan begitu soal tampil di layar
+    setSedangPutar(true)
+    putarNarasi(soal.id, () => setSedangPutar(false))
+
     return () => {
       window.clearTimeout(timerPilih.current)
       hentikanNarasi()

@@ -10,28 +10,27 @@ export function acakOpsi(soal: Soal, rng: () => number = Math.random): readonly 
 
 export const LATIHAN: readonly Soal[] = [
   {
-    id: 'L1',
+    id: 'latihan-1',
     tanya: 'Temanmu mengajak untuk bermain bersama, respon apa yang tepat?',
     benar: 'Ayo bermain',
     salah: 'Aku tidak mau berteman!',
   },
   {
-    id: 'L2',
+    id: 'latihan-2',
     tanya: 'Kamu dan temanmu akan menaiki ayunan, respon apa yang tepat?',
     benar: 'Ayo kita bergiliran ya',
     salah: 'Tidak, aku mau duluan',
   },
   {
-    id: 'L3',
+    id: 'latihan-3',
     tanya: 'Temanmu ingin mengganti permainan, responmu yang tepat ialah...',
     benar: 'Tenang dan menerima perubahan',
     salah: 'Marah kepada temanmu',
   },
   {
-    id: 'L4',
+    id: 'latihan-4',
     tanya: 'Temanmu memintamu untuk berbagi makanan. Respon yang tepat ialah....',
     benar: 'Ya, kamu boleh memintanya',
     salah: 'Tidak, ini punyaku',
   },
 ]
-

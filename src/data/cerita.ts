@@ -21,22 +21,22 @@ export const CERITA: readonly Cerita[] = [
     nama: 'Menunggu Giliran',
     judul: 'Menunggu giliran bermain',
     langkah: [
-      { jenis: 'narasi', id: 'giliran-01', hal: '1/4', teks: 'Kamu bermain bersama temanmu dan menunggu giliran dengan tenang' },
-      { jenis: 'narasi', id: 'giliran-02', hal: '2/4', teks: 'Temanmu datang untuk meminta gilirannya' },
+      { jenis: 'narasi', id: 'giliran-1', hal: '1/4', teks: 'Kamu bermain bersama temanmu dan menunggu giliran dengan tenang' },
+      { jenis: 'narasi', id: 'giliran-2', hal: '2/4', teks: 'Temanmu datang untuk meminta gilirannya' },
       {
         jenis: 'pilihan',
-        id: 'giliran-pilih',
+        id: 'giliran-soal',
         hal: '3/4',
         teks: 'Pilih respon yang tepat ya',
         benar: 'Ya, giliranmu sekarang',
         salah: 'Tidak, aku tidak mau giliran',
         ulang: {
-          id: 'giliran-ulang',
+          id: 'giliran-salah',
           hal: '4/4',
           teks: 'Kalau kamu tidak mau bergiliran, temanmu bisa merasa kesal dan tidak mau bermain lagi denganmu. Coba lagi yuk!',
         },
       },
-      { jenis: 'hebat', id: 'giliran-hebat', hal: '4/4', teks: 'Kamu memilih respon yang tepat! Temanmu jadi senang karena kamu bermain bergiliran' },
+      { jenis: 'hebat', id: 'giliran-benar', hal: '4/4', teks: 'Kamu memilih respon yang tepat! Temanmu jadi senang karena kamu bermain bergiliran' },
       { jenis: 'selesai', id: 'giliran-selesai', teks: 'Kamu sudah menyelesaikan cerita untuk bergiliran bermain dengan teman. Terus lakukan dengan baik ya!' },
     ],
   },
@@ -46,20 +46,20 @@ export const CERITA: readonly Cerita[] = [
     nama: 'Berbagi dengan Teman',
     judul: 'Berbagi dengan Teman',
     langkah: [
-      { jenis: 'narasi', id: 'berbagi-01', hal: '1/6', teks: 'Temanmu ingin meminta makanan' },
-      { jenis: 'narasi', id: 'berbagi-02', hal: '2/6', teks: 'Kamu tidak mau berbagi makanan' },
-      { jenis: 'narasi', id: 'berbagi-03', hal: '3/6', teks: 'Temanmu merasa kesal denganmu' },
-      { jenis: 'narasi', id: 'berbagi-04', hal: '4/6', teks: 'Apa yang seharusnya kamu lakukan agar temanmu tidak merasa kesal?' },
+      { jenis: 'narasi', id: 'berbagi-1', hal: '1/6', teks: 'Temanmu ingin meminta makanan' },
+      { jenis: 'narasi', id: 'berbagi-2', hal: '2/6', teks: 'Kamu tidak mau berbagi makanan' },
+      { jenis: 'narasi', id: 'berbagi-3', hal: '3/6', teks: 'Temanmu merasa kesal denganmu' },
+      { jenis: 'narasi', id: 'berbagi-4', hal: '4/6', teks: 'Apa yang seharusnya kamu lakukan agar temanmu tidak merasa kesal?' },
       {
         jenis: 'pilihan',
-        id: 'berbagi-pilih',
+        id: 'berbagi-soal',
         hal: '5/6',
         teks: 'Pilih respon yang paling tepat ya!',
         benar: 'Ya, aku mau berbagi',
         salah: 'Aku tidak perlu berbagi',
-        ulang: { id: 'berbagi-ulang', hal: '6/6', teks: 'Kalau kamu tidak mau berbagi, temanmu bisa merasa kesal. Coba lagi yuk!' },
+        ulang: { id: 'berbagi-salah', hal: '6/6', teks: 'Kalau kamu tidak mau berbagi, temanmu bisa merasa kesal. Coba lagi yuk!' },
       },
-      { jenis: 'hebat', id: 'berbagi-hebat', hal: '6/6', teks: 'Kamu memilih respon yang tepat! Temanmu jadi senang karena kamu berbagi' },
+      { jenis: 'hebat', id: 'berbagi-benar', hal: '6/6', teks: 'Kamu memilih respon yang tepat! Temanmu jadi senang karena kamu berbagi' },
       { jenis: 'selesai', id: 'berbagi-selesai', teks: 'Kamu sudah menyelesaikan cerita untuk berbagi dengan teman. Terus lakukan perilaku baik ya!' },
     ],
   },
@@ -71,50 +71,49 @@ export const CERITA: readonly Cerita[] = [
     langkah: [
       {
         jenis: 'narasi',
-        id: 'perubahan-01',
+        id: 'perubahan-1',
         hal: '1/6',
         teks: 'Kamu dan temanmu sedang asyik bermain bersama membaca cerita',
       },
       {
         jenis: 'narasi',
-        id: 'perubahan-02',
+        id: 'perubahan-2',
         hal: '2/6',
         teks: 'Temanmu tiba-tiba ingin bermain balok saja',
       },
       {
         jenis: 'narasi',
-        id: 'perubahan-03',
+        id: 'perubahan-3',
         hal: '3/6',
         teks: 'Temanmu ingin permainan berubah. Kamu harus bagaimana?',
       },
       {
         jenis: 'pilihan',
-        id: 'perubahan-pilih',
+        id: 'perubahan-soal',
         hal: '4/6',
         teks: 'Pilih respon yang paling tepat ya!',
         benar: 'Tarik napas, tenang, terima perubahan',
         salah: 'Marah dan merebut mainan',
         ulang: {
-          id: 'perubahan-ulang',
+          id: 'perubahan-salah',
           hal: '5/6',
           teks: 'Kamu berteriak dan menarik mainan karena marah. Temanmu jadi kesal, akhirnya tidak bisa bermain bersama',
         },
       },
-      // Tanpa penghitung halaman (PRD I2).
       {
         jenis: 'hebat',
-        id: 'perubahan-hebat',
+        id: 'perubahan-benar',
         teks: 'Kamu memilih respon yang tepat! Temanmu jadi senang karena kamu dapat menerima perubahan dengan tenang',
       },
       {
         jenis: 'narasi',
-        id: 'perubahan-terima',
+        id: 'perubahan-lanjut-1',
         hal: '5/6',
         teks: 'Kamu menerima perubahan dengan tenang. Kamu dan temanmu bermain dengan bahagia.',
       },
       {
         jenis: 'narasi',
-        id: 'perubahan-pelajaran',
+        id: 'perubahan-lanjut-2',
         hal: '6/6',
         teks: 'Ketika rencana berubah, kamu boleh merasa kecewa. Kamu bisa menarik napas dengan tenang dan menjadi teman yang baik.',
       },
@@ -127,6 +126,5 @@ export const CERITA: readonly Cerita[] = [
   },
 ]
 
-// Setelah cerita ketiga kembali ke cerita pertama (PRD A11).
 export const ceritaBerikutnya = (id: CeritaId): CeritaId =>
   CERITA[(CERITA.findIndex((c) => c.id === id) + 1) % CERITA.length].id

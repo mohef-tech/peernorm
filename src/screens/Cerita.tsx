@@ -120,16 +120,15 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
     window.clearTimeout(timerPilih.current)
     hentikanNarasi()
 
-    if (ulang || langkah.jenis === 'hebat' || langkah.jenis === 'selesai') {
-      setSedangPutar(true)
-      putarNarasi(tampil.id, () => setSedangPutar(false))
-    }
+    // Putar narasi otomatis di setiap adegan, kuis, feedback salah, hebat, maupun selesai
+    setSedangPutar(true)
+    putarNarasi(tampil.id, () => setSedangPutar(false))
 
     return () => {
       window.clearTimeout(timerPilih.current)
       hentikanNarasi()
     }
-  }, [indeksHalaman, ulang, id, langkah.jenis, tampil.id])
+  }, [indeksHalaman, ulang, id, tampil.id])
 
   const maju = () => {
     window.clearTimeout(timerPilih.current)
