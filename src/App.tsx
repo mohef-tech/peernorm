@@ -92,7 +92,7 @@ const LAYAR_BERSUARA: ReadonlySet<Layar> = new Set(['petunjuk', 'cerita', 'latih
 const TANPA_BERANDA: ReadonlySet<Layar> = new Set(['splash', 'mulai', 'profil', 'menu', 'keluar'])
 
 function modeUntukLayar(layar: Layar): ModeBacksound {
-  //if (layar === 'splash') return 'mati'
+  if (layar === 'splash') return 'mati'
   return LAYAR_BERSUARA.has(layar) ? 'bersuara' : 'tanpa-suara'
 }
 
@@ -103,6 +103,8 @@ export function App() {
 
   useEffect(mintaPersisten, [])
   useEffect(() => simpanTotal(state.total), [state.total])
+
+
 
   useEffect(() => {
     const atur = () => {

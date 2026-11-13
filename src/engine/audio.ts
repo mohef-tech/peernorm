@@ -100,3 +100,8 @@ export function aturBacksound(mode: ModeBacksound) {
 
   musik.play().catch(() => { })
 }
+
+// Kompatibilitas untuk unit test (bintang.test.ts)
+export function musikHidup(hidup: boolean) {
+  aturBacksound(hidup ? 'tanpa-suara' : 'mati')
+}
