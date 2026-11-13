@@ -150,6 +150,18 @@ export function App() {
   }, [])
 
   const play = () => {
+    // Masuk mode layar penuh otomatis di Chrome Android saat tombol Play disentuh
+    const el = document.documentElement as HTMLElement & {
+      webkitRequestFullscreen?: () => Promise<void>
+    }
+    if (!document.fullscreenElement) {
+      if (el.requestFullscreen) {
+        el.requestFullscreen().catch(() => { })
+      } else if (el.webkitRequestFullscreen) {
+        el.webkitRequestFullscreen().catch(() => { })
+      }
+    }
+
     // Musik harus dimulai di dalam sentuhan agar diizinkan Safari iPad (PRD A15).
     sudahDisentuh.current = true
     aturBacksound('tanpa-suara')
