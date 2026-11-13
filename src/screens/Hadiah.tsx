@@ -96,7 +96,6 @@ export function Hadiah({
       {/* Layer 6: Rak 3 Lencana */}
       <div className="modul-hadiah-rak-lencana">
         <div className={`modul-hadiah-kartu-lencana ${lencana1Aktif ? 'aktif' : 'redup'}`}>
-          <span className="modul-hadiah-label-bintang">1-3 Bintang</span>
           <img
             src={`${BASE_HADIAH}lencana-1.webp`}
             alt="Aku Mulai Bisa"
@@ -107,7 +106,6 @@ export function Hadiah({
         <span className="modul-hadiah-titik-penghubung">•••</span>
 
         <div className={`modul-hadiah-kartu-lencana ${lencana2Aktif ? 'aktif' : 'redup'}`}>
-          <span className="modul-hadiah-label-bintang">4-6 Bintang</span>
           <img
             src={`${BASE_HADIAH}lencana-2.webp`}
             alt="Aku Semakin Bisa"
@@ -118,7 +116,6 @@ export function Hadiah({
         <span className="modul-hadiah-titik-penghubung">•••</span>
 
         <div className={`modul-hadiah-kartu-lencana ${lencana3Aktif ? 'aktif' : 'redup'}`}>
-          <span className="modul-hadiah-label-bintang">7 Bintang</span>
           <img
             src={`${BASE_HADIAH}lencana-3.webp`}
             alt="Aku Hebat Berteman"

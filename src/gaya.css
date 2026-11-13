@@ -1648,6 +1648,24 @@ h1 {
   left: 50%;
 }
 
+/* Geser ke kanan khusus adegan 1-3 Cerita Berbagi (Slide 13, 14, 15) agar sejajar kotak kuning */
+/* Slide 13 (adegan-1) tetap di 52.4% */
+.cerita-berbagi .cerita-adegan-langkah-0 {
+  left: 52.4%;
+}
+
+/* Slide 21 (Cerita Perubahan - adegan 1): turunkan posisi agar anak menapak dan tidak melayang */
+.cerita-perubahan .cerita-adegan-langkah-0 {
+  top: 290px;
+  left: 50%;
+}
+
+/* Slide 14 & 15 (adegan-2 & adegan-3) ditengah-kan sejajar kotak kuning */
+.cerita-berbagi .cerita-adegan-langkah-1,
+.cerita-berbagi .cerita-adegan-langkah-2 {
+  left: 51.3%;
+}
+
 .cerita-adegan-img {
   display: block;
   max-width: 1120px;
@@ -2838,7 +2856,7 @@ h1 {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 3;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
 }
@@ -2851,7 +2869,7 @@ h1 {
 
 .modul-hasil-baris-tombol {
   position: absolute;
-  bottom: 150px;
+  bottom: 235px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -2986,7 +3004,7 @@ h1 {
 /* Rak 3 Lencana (Duduk manis di dalam wadah krem karakter) */
 .modul-hadiah-rak-lencana {
   position: absolute;
-  bottom: 230px;
+  bottom: 285px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -3004,6 +3022,7 @@ h1 {
 }
 
 .modul-hadiah-label-bintang {
+  display: none;
   font-size: 22px;
   font-weight: 700;
   color: #532d16;

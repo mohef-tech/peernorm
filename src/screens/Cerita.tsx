@@ -235,7 +235,7 @@ export function Cerita({ id, onSelesai, onMenuCerita, onCeritaLain, onKembali }:
   const tampilNavKiri = indeksHalaman > 0 && !modeUlang && !modeSelesai
 
   return (
-    <section className="layar layar-cerita-panggung">
+    <section className={`layar layar-cerita-panggung cerita-${id}`}>
       {/* Layer 1: Latar Panggung */}
       {pakaiLatarKonsekuensi ? (
         <img
