@@ -4,7 +4,7 @@ import { Tombol } from './components/Tombol'
 import { ceritaBerikutnya, type CeritaId } from './data/cerita'
 import type { ProfilId } from './data/profil'
 import { TEKS } from './data/teks'
-import { hentikanNarasi, musikHidup } from './engine/audio'
+import { aturBacksound, hentikanNarasi, type ModeBacksound } from './engine/audio'
 import { SESI_BARU, bintangSesi, selesaiCerita, selesaiLatihan, type Sesi } from './engine/bintang'
 import { bacaTotal, mintaPersisten, simpanTotal, type Total } from './engine/storage'
 import { Cerita } from './screens/Cerita'
@@ -42,6 +42,7 @@ type Aksi =
   | { tipe: 'ceritaSelesai'; id: CeritaId }
   | { tipe: 'latihanSelesai'; benar: number }
   | { tipe: 'ulangiLatihan' }
+  | { tipe: 'resetSemua' }
 
 // Setiap penambahan langsung masuk ke total profil aktif (PRD §8 #3).
 function beri(state: State, hasil: { sesi: Sesi; tambah: number }): State {
@@ -69,6 +70,8 @@ function reducer(state: State, aksi: Aksi): State {
       return { ...beri(state, selesaiLatihan(state.sesi, aksi.benar)), hasilLatihan: aksi.benar, layar: 'hasilLatihan' }
     case 'ulangiLatihan':
       return { ...state, putaran: state.putaran + 1, layar: 'latihan' }
+    case 'resetSemua':
+      return { ...state, total: bacaTotal(), sesi: SESI_BARU, hasilLatihan: 0 }
   }
 }
 
@@ -83,9 +86,15 @@ const awal = (): State => ({
   putaran: 0,
 })
 
-const MUSIK_HIDUP: ReadonlySet<Layar> = new Set(['mulai', 'profil', 'menu']) // S02-S04 (PRD §10.3)
+// Halaman yang memiliki ikon audio & narasi suara
+const LAYAR_BERSUARA: ReadonlySet<Layar> = new Set(['petunjuk', 'cerita', 'latihan'])
 // Beranda = Menu. Tidak ditampilkan di Menu sendiri, Profil, dan Modal Keluar; lihat alur.md.
 const TANPA_BERANDA: ReadonlySet<Layar> = new Set(['splash', 'mulai', 'profil', 'menu', 'keluar'])
+
+function modeUntukLayar(layar: Layar): ModeBacksound {
+  //if (layar === 'splash') return 'mati'
+  return LAYAR_BERSUARA.has(layar) ? 'bersuara' : 'tanpa-suara'
+}
 
 export function App() {
   const [state, dispatch] = useReducer(reducer, undefined, awal)
@@ -96,14 +105,31 @@ export function App() {
   useEffect(() => simpanTotal(state.total), [state.total])
 
   useEffect(() => {
-    const atur = () => musikHidup(sudahDisentuh.current && !document.hidden && MUSIK_HIDUP.has(layar))
+    const atur = () => {
+      if (!sudahDisentuh.current || document.hidden) {
+        aturBacksound('mati')
+      } else {
+        aturBacksound(modeUntukLayar(layar))
+      }
+    }
     const saatTab = () => {
       if (document.hidden) hentikanNarasi()
       atur()
     }
+    const saatSentuhPertama = () => {
+      if (!sudahDisentuh.current) {
+        sudahDisentuh.current = true
+        atur()
+      }
+    }
+
     atur()
     document.addEventListener('visibilitychange', saatTab)
-    return () => document.removeEventListener('visibilitychange', saatTab)
+    window.addEventListener('pointerdown', saatSentuhPertama, { once: true })
+    return () => {
+      document.removeEventListener('visibilitychange', saatTab)
+      window.removeEventListener('pointerdown', saatSentuhPertama)
+    }
   }, [layar])
 
   const ke = useCallback((l: Layar) => dispatch({ tipe: 'ke', layar: l }), [])
@@ -116,11 +142,15 @@ export function App() {
     dispatch({ tipe: 'akhiriSesi', layar: 'mulai' })
   }, [state.total])
   const ceritaSelesai = useCallback((id: CeritaId) => dispatch({ tipe: 'ceritaSelesai', id }), [])
+  const resetSemua = useCallback(() => {
+    localStorage.clear()
+    dispatch({ tipe: 'resetSemua' })
+  }, [])
 
   const play = () => {
     // Musik harus dimulai di dalam sentuhan agar diizinkan Safari iPad (PRD A15).
     sudahDisentuh.current = true
-    musikHidup(true)
+    aturBacksound('tanpa-suara')
     ke('profil')
   }
 
@@ -163,7 +193,7 @@ export function App() {
           />
         )}
         {layar === 'hadiah' && <Hadiah bintangSesi={bintangSesi(state.sesi)} onKembali={keMenu} />}
-        {layar === 'panduan' && <Panduan />}
+        {layar === 'panduan' && <Panduan onReset={resetSemua} />}
 
         {!TANPA_BERANDA.has(layar) && (
           <Tombol varian="kecil" className="tombol-beranda" onClick={keMenu}>

@@ -1,10 +1,18 @@
-// Manajer suara (PRD §10.2, §10.3): satu narasi pada satu waktu, musik hanya setelah sentuhan pertama.
+// Manajer suara (PRD §10.2, §10.3): satu narasi pada satu waktu, backsound pelan sesuai jenis halaman.
 const BASE = (import.meta.env?.BASE_URL ?? '/') + 'assets/audio/'
+
+export type ModeBacksound = 'mati' | 'tanpa-suara' | 'bersuara'
+
+const FILE_BACKSOUND: Record<Exclude<ModeBacksound, 'mati'>, string> = {
+  'tanpa-suara': 'backsound-untuk-halaman-tanpa-suara.mp3',
+  bersuara: 'backsound-untuk-halaman-bersuara.mp3',
+}
 
 let narasi: HTMLAudioElement | null = null
 let berhentiCb: (() => void) | null = null
 let musik: HTMLAudioElement | null = null
-let musikGagal = false
+let modeAktif: ModeBacksound = 'mati'
+const musikGagal = new Set<string>()
 const tersedia = new Map<string, Promise<boolean>>()
 
 // File belum dikirim klien = ikon suara disembunyikan secara silent (PRD §10.2).
@@ -59,24 +67,36 @@ export function hentikanNarasi() {
   cb?.()
 }
 
-// shortcut: musik dijeda langsung tanpa efek memudar, tambah fade saat musik final masuk (9-10 Nov).
-export function musikHidup(hidup: boolean) {
-  if (!hidup) return musik?.pause()
-  if (musikGagal || typeof Audio === 'undefined') return
-  if (!musik) {
+export function aturBacksound(mode: ModeBacksound) {
+  if (mode === 'mati' || typeof Audio === 'undefined') {
+    modeAktif = 'mati'
+    musik?.pause()
+    return
+  }
+
+  const namaFile = FILE_BACKSOUND[mode]
+  if (musikGagal.has(namaFile)) return
+
+  if (!musik || modeAktif !== mode) {
+    if (musik) {
+      musik.pause()
+      musik = null
+    }
     try {
-      musik = new Audio(BASE + 'musik-pembuka.mp3')
+      musik = new Audio(BASE + namaFile)
       musik.loop = true
-      musik.volume = 0.25
+      // Volume lebih pelan pada halaman bernarasi agar instruksi suara terdengar jelas
+      musik.volume = mode === 'bersuara' ? 0.1 : 0.2
       musik.onerror = () => {
-        musikGagal = true
+        musikGagal.add(namaFile)
         musik = null
       }
+      modeAktif = mode
     } catch {
-      musikGagal = true
+      musikGagal.add(namaFile)
       return
     }
   }
-  musik.play().catch(() => {})
-}
 
+  musik.play().catch(() => { })
+}
