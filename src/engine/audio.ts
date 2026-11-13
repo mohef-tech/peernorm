@@ -86,7 +86,7 @@ export function aturBacksound(mode: ModeBacksound) {
       musik = new Audio(BASE + namaFile)
       musik.loop = true
       // Volume lebih pelan pada halaman bernarasi agar instruksi suara terdengar jelas
-      musik.volume = mode === 'bersuara' ? 0.1 : 0.2
+      musik.volume = mode === 'bersuara' ? 0.3 : 0.2
       musik.onerror = () => {
         musikGagal.add(namaFile)
         musik = null
